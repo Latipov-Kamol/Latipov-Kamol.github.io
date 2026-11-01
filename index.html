@@ -75,35 +75,7 @@ input[type=file]{margin:4px 0 8px;font-size:13px;max-width:100%}
 
 <section id="projects"><div class="wrap">
 <h2>Projects</h2>
-<div class="grid">
-
-<div class="card">
-<span class="num">PROJECT 01 · TABULAR ML</span>
-<h3>California Housing Price Prediction</h3>
-<p>Predicts median house prices from census features. Compared Linear Regression with Random Forest after EDA and feature scaling.</p>
-<div class="stat">Random Forest: R² <b>≈ 0.805</b> · RMSE <b>≈ 0.506</b></div>
-<div class="chips"><span class="chip">Python</span><span class="chip">scikit-learn</span><span class="chip">pandas</span><span class="chip">seaborn</span></div>
-<div class="links"><a href="https://github.com/Latipov-Kamol/California-Housing-Price-Prediction">Code →</a><a href="#demo-housing">Try it live →</a></div>
-</div>
-
-<div class="card">
-<span class="num">PROJECT 02 · COMPUTER VISION</span>
-<h3>Fashion-MNIST CNN Classifier</h3>
-<p>Convolutional neural network in PyTorch that recognizes 10 types of clothing, including inference on custom uploaded images.</p>
-<div class="stat">Test accuracy: <b>90.2%</b></div>
-<div class="chips"><span class="chip">PyTorch</span><span class="chip">CNN</span><span class="chip">Torchvision</span></div>
-<div class="links"><a href="https://github.com/Latipov-Kamol/Fashion-MNIST-CNN-Classifier">Code →</a><a href="#demo-fashion">Try it live →</a></div>
-</div>
-
-<div class="card soon">
-<span class="num">PROJECT 03 · NLP</span>
-<h3>Sentiment Analysis with Transformers</h3>
-<p>In progress: classifying text reviews as positive or negative with modern language models.</p>
-<div class="chips"><span class="chip">Hugging Face</span><span class="chip">Transformers</span></div>
-<div class="links"><a href="#">Coming soon</a></div>
-</div>
-
-</div>
+<div class="grid" id="plist"><p class="sub">Loading projects…</p></div>
 </div></section>
 
 <section id="demos"><div class="wrap">
@@ -179,6 +151,20 @@ try{if(!RF)RF=await load('housing_rf.json')}catch(_){out.textContent='Model file
 const v=FIELDS.map(f=>parseFloat($('h_'+f[0]).value));let sum=0;
 for(const t of RF.trees){let n=0;while(t.l[n]!==-1){n=v[t.f[n]]<=t.t[n]?t.l[n]:t.r[n]}sum+=t.v[n]}
 out.innerHTML='<div class="price">$'+Math.round(sum/RF.trees.length*100000).toLocaleString('en-US')+'</div>'};
+})();
+</script>
+<script>
+(function(){
+const esc=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const box=document.getElementById('plist');
+fetch('projects.json').then(r=>r.json()).then(list=>{
+box.innerHTML=list.map((p,i)=>{
+const n=String(i+1).padStart(2,'0');
+const links=p.soon?'<a href="#">Coming soon</a>':(p.code?'<a href="'+esc(p.code)+'">Code →</a>':'')+(p.demo?'<a href="'+esc(p.demo)+'">Try it live →</a>':'');
+return '<div class="card'+(p.soon?' soon':'')+'"><span class="num">PROJECT '+n+(p.kind?' · '+esc(p.kind):'')+'</span><h3>'+esc(p.title)+'</h3><p>'+esc(p.text||'')+'</p>'
++(p.stat?'<div class="stat">'+esc(p.stat).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>')+'</div>':'')
++'<div class="chips">'+(p.tags||[]).map(t=>'<span class="chip">'+esc(t)+'</span>').join('')+'</div><div class="links">'+links+'</div></div>'}).join('')
+}).catch(()=>{box.innerHTML='<p class="sub">Could not load projects.json. Check the file for a missing comma or quote.</p>'});
 })();
 </script>
 </body>

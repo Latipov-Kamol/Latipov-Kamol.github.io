@@ -1,0 +1,39 @@
+[
+  {
+    "kind": "TABULAR ML",
+    "title": "California Housing Price Prediction",
+    "text": "Predicts median house prices from census features. Compared Linear Regression with Random Forest after EDA and feature scaling.",
+    "stat": "Random Forest: R² **≈ 0.805** · RMSE **≈ 0.506**",
+    "tags": [
+      "Python",
+      "scikit-learn",
+      "pandas",
+      "seaborn"
+    ],
+    "code": "https://github.com/Latipov-Kamol/California-Housing-Price-Prediction",
+    "demo": "#demo-housing"
+  },
+  {
+    "kind": "COMPUTER VISION",
+    "title": "Fashion-MNIST CNN Classifier",
+    "text": "Convolutional neural network in PyTorch that recognizes 10 types of clothing, including inference on custom uploaded images.",
+    "stat": "Test accuracy: **90.2%**",
+    "tags": [
+      "PyTorch",
+      "CNN",
+      "Torchvision"
+    ],
+    "code": "https://github.com/Latipov-Kamol/Fashion-MNIST-CNN-Classifier",
+    "demo": "#demo-fashion"
+  },
+  {
+    "kind": "NLP",
+    "title": "Sentiment Analysis with Transformers",
+    "text": "In progress: classifying text reviews as positive or negative with modern language models.",
+    "tags": [
+      "Hugging Face",
+      "Transformers"
+    ],
+    "soon": true
+  }
+]
