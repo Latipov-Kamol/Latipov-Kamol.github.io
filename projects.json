@@ -35,5 +35,13 @@
       "Transformers"
     ],
     "soon": true
-  }
+  },
+  {
+  "kind": "NLP",
+  "title": "Название проекта",
+  "text": "Короткое описание, 1–2 предложения.",
+  "stat": "Accuracy: **92%**",
+  "tags": ["Python", "PyTorch"],
+  "code": "https://github.com/Latipov-Kamol/ИМЯ-РЕПОЗИТОРИЯ"
+}
 ]
