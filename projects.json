@@ -43,5 +43,20 @@
   "stat": "Accuracy: **92%**",
   "tags": ["Python", "PyTorch"],
   "code": "https://github.com/Latipov-Kamol/ИМЯ-РЕПОЗИТОРИЯ"
-}
+},
+    {
+    "kind": "NLP",
+    "title": "Sentiment Analysis with Transformers",
+    "text": "In progress: classifying text reviews as positive or negative with modern language models.",
+    "tags": ["Hugging Face", "Transformers"],
+    "soon": true
+  },
+  {
+    "kind": "NEW",
+    "title": "Название нового проекта",
+    "text": "Короткое описание.",
+    "tags": ["Python"],
+    "code": "https://github.com/Latipov-Kamol/ИМЯ-РЕПОЗИТОРИЯ"
+  }
+]
 ]
