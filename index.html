@@ -3,69 +3,100 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%235b5bf0'/%3E%3Cpath d='M10 8v16M10 16l9-8M10 16l9 8' stroke='white' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E">
 <title>Kamol Latipov — AI & Data Science Portfolio</title>
 <style>
-:root{--bg:#f7f8fb;--card:#fff;--text:#14182b;--muted:#5b6280;--accent:#4f46e5;--line:#e3e6f0}
-@media (prefers-color-scheme:dark){:root{--bg:#0e1020;--card:#171a30;--text:#eef0fb;--muted:#9aa0c3;--accent:#8b87ff;--line:#272b4a}}
+:root{--bg:#f5f6fb;--card:#fff;--text:#12152b;--muted:#5a6182;--accent:#5b5bf0;--accent2:#12a8c4;--line:#e1e4f1;--nav:rgba(245,246,251,.78);--glow:rgba(91,91,240,.16);--shadow:0 10px 30px rgba(40,50,120,.10);--grad:linear-gradient(135deg,#5b5bf0,#12a8c4)}
+@media (prefers-color-scheme:dark){:root{--bg:#090b15;--card:#121528;--text:#eceefb;--muted:#9097bd;--accent:#8082ff;--accent2:#35d6ea;--line:#242849;--nav:rgba(9,11,21,.78);--glow:rgba(128,130,255,.20);--shadow:0 10px 34px rgba(0,0,0,.45);--grad:linear-gradient(135deg,#7476ff,#35d6ea)}}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
 body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
-.wrap{max-width:980px;margin:0 auto;padding:0 20px}
-nav{position:sticky;top:0;background:var(--bg);border-bottom:1px solid var(--line);z-index:5}
-nav .wrap{display:flex;justify-content:space-between;align-items:center;height:56px}
-nav a{color:var(--muted);text-decoration:none;margin-left:18px;font-size:14px}
+.wrap{max-width:1000px;margin:0 auto;padding:0 22px}
+a:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+nav{position:sticky;top:0;background:var(--nav);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line);z-index:5}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;height:60px}
+nav a{color:var(--muted);text-decoration:none;margin-left:20px;font-size:14px;transition:color .2s}
 nav a:hover{color:var(--accent)}
-.logo{font-weight:700;color:var(--text)!important;margin:0!important}
-header{padding:80px 0 56px}
-.tag{display:inline-block;background:var(--card);border:1px solid var(--line);border-radius:99px;padding:4px 14px;font-size:13px;color:var(--accent)}
-h1{font-size:clamp(34px,6vw,56px);line-height:1.1;margin:18px 0 14px}
-h1 span{color:var(--accent)}
-header p{max-width:600px;color:var(--muted);font-size:18px}
-.btn{display:inline-block;padding:10px 20px;border-radius:10px;background:var(--accent);color:#fff;text-decoration:none;font-weight:600;margin:12px 10px 0 0}
-.btn.alt{background:transparent;color:var(--accent);border:1px solid var(--accent)}
-section{padding:48px 0}
-h2{font-size:28px;margin:0 0 24px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;display:flex;flex-direction:column}
-.card h3{margin:6px 0 8px;font-size:19px}
+nav a.logo{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--text);margin:0;font-size:15px}
+.logo svg{width:32px;height:32px}
+header{position:relative;padding:84px 0 64px;overflow:hidden}
+header::before{content:"";position:absolute;inset:-20% -10% auto -10%;height:480px;background:radial-gradient(600px 300px at 20% 30%,var(--glow),transparent 70%),radial-gradient(500px 260px at 85% 10%,rgba(18,168,196,.14),transparent 70%);pointer-events:none}
+.hero{position:relative;display:grid;grid-template-columns:1.25fr .75fr;gap:30px;align-items:center}
+.tag{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:99px;padding:5px 14px;font-size:13px;color:var(--muted)}
+.dot{width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 0 rgba(34,197,94,.6);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 8px rgba(34,197,94,0)}100%{box-shadow:0 0 0 0 rgba(34,197,94,0)}}
+h1{font-size:clamp(34px,6vw,58px);line-height:1.08;margin:20px 0 16px;letter-spacing:-.02em}
+h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+header p{max-width:560px;color:var(--muted);font-size:18px;margin:0 0 10px}
+.btn{display:inline-block;padding:11px 22px;border-radius:12px;background:var(--grad);color:#fff;text-decoration:none;font-weight:600;font-size:15px;margin:14px 10px 0 0;box-shadow:0 6px 18px var(--glow);transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px var(--glow)}
+.btn.alt{background:transparent;color:var(--text);border:1px solid var(--line);box-shadow:none}
+.btn.alt:hover{border-color:var(--accent);color:var(--accent)}
+.net{width:100%;height:auto;color:var(--accent)}
+.net line{stroke:currentColor;stroke-opacity:.22;stroke-width:1}
+.net circle{fill:var(--card);stroke:currentColor;stroke-width:1.6;animation:blink 3.4s ease-in-out infinite}
+@keyframes blink{50%{fill:currentColor;fill-opacity:.55}}
+@media (prefers-reduced-motion:reduce){.net circle,.dot{animation:none}}
+@media (max-width:800px){.hero{grid-template-columns:1fr}.net{display:none}header{padding:56px 0 40px}}
+section{padding:52px 0}
+h2{font-size:28px;margin:0 0 26px;letter-spacing:-.01em;display:flex;align-items:center;gap:12px}
+h2::before{content:"";width:5px;height:26px;border-radius:3px;background:var(--grad)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:22px}
+.card{position:relative;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s,border-color .25s}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--accent)}
+.card h3{margin:8px 0 8px;font-size:20px}
 .card p{color:var(--muted);margin:0 0 14px;font-size:15px;flex:1}
-.num{font-size:12px;font-weight:700;color:var(--accent);letter-spacing:.08em}
-.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
-.chip{font-size:12px;padding:3px 10px;border-radius:99px;background:var(--bg);border:1px solid var(--line);color:var(--muted)}
-.links a{color:var(--accent);font-weight:600;text-decoration:none;margin-right:16px;font-size:14px}
-.stat{font-size:14px;margin-bottom:12px}
-.stat b{color:var(--accent)}
+.num{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;font-weight:600;color:var(--accent);letter-spacing:.06em}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.chip{font-size:12px;padding:3px 11px;border-radius:99px;background:var(--bg);border:1px solid var(--line);color:var(--muted)}
+.links{display:flex;flex-wrap:wrap;gap:10px}
+.links a{display:inline-flex;align-items:center;padding:9px 16px;border-radius:10px;font-size:14px;font-weight:600;text-decoration:none;transition:transform .2s,box-shadow .2s,border-color .2s}
+.links a.p{background:var(--grad);color:#fff;box-shadow:0 4px 14px var(--glow)}
+.links a.g{border:1px solid var(--line);color:var(--text)}
+.links a:hover{transform:translateY(-2px)}
+.links a.p:hover{box-shadow:0 8px 20px var(--glow)}
+.links a.g:hover{border-color:var(--accent);color:var(--accent)}
+.stat{font-size:14px;margin-bottom:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.stat b{color:var(--accent2)}
 .soon{opacity:.65;border-style:dashed}
-.skills{display:flex;flex-wrap:wrap;gap:10px}
-.skills .chip{font-size:14px;padding:6px 14px;color:var(--text)}
-footer{padding:40px 0;border-top:1px solid var(--line);color:var(--muted);font-size:14px;text-align:center}
-
-.sub{color:var(--muted);margin:-12px 0 22px}
-input[type=number]{width:100%;padding:7px 9px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--text);font-size:14px}
-input[type=file]{margin:4px 0 8px;font-size:13px;max-width:100%}
+.soon:hover{transform:none;box-shadow:none;border-color:var(--line)}
+.sub{color:var(--muted);margin:-14px 0 24px}
+input[type=number]{width:100%;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--text);font-size:14px}
+input[type=number]:focus{border-color:var(--accent)}
+input[type=file]{margin:4px 0 8px;font-size:13px;max-width:100%;color:var(--muted)}
+input[type=file]::file-selector-button{padding:7px 14px;margin-right:10px;border-radius:9px;border:0;background:var(--grad);color:#fff;font-weight:600;cursor:pointer}
 .chk{font-size:13px;color:var(--muted);display:block;margin-bottom:10px}
-#fprev{width:112px;height:112px;image-rendering:pixelated;border:1px solid var(--line);border-radius:8px;background:#000;margin-bottom:10px}
+#fprev{width:112px;height:112px;image-rendering:pixelated;border:1px solid var(--line);border-radius:10px;background:#000;margin-bottom:10px}
 .out{font-size:15px;min-height:24px}
-.bar{display:flex;align-items:center;gap:8px;margin:4px 0;font-size:14px}
-.bar i{display:block;height:8px;border-radius:4px;background:var(--accent)}
+.bar{display:flex;align-items:center;gap:8px;margin:5px 0;font-size:14px}
+.bar i{display:block;height:8px;border-radius:4px;background:var(--grad)}
 .bar span:first-child{width:96px}
 .form{display:grid;grid-template-columns:1fr 1fr;gap:8px 12px;margin-bottom:12px}
 .form label{font-size:12px;color:var(--muted)}
-.price{font-size:26px;font-weight:700;color:var(--accent)}
+.price{font-size:30px;font-weight:700;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.skills{display:flex;flex-wrap:wrap;gap:10px}
+.skills .chip{font-size:14px;padding:7px 15px;color:var(--text);background:var(--card);transition:border-color .2s,color .2s}
+.skills .chip:hover{border-color:var(--accent);color:var(--accent)}
+footer{padding:40px 0;border-top:1px solid var(--line);color:var(--muted);font-size:14px;text-align:center}
+footer a{color:var(--accent);text-decoration:none;margin:0 8px}
 </style>
 </head>
 <body>
 <nav><div class="wrap">
-<a class="logo" href="#top">Kamol Latipov</a>
+<a class="logo" href="#top"><svg viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5b5bf0"/><stop offset="1" stop-color="#12a8c4"/></linearGradient></defs><rect width="32" height="32" rx="9" fill="url(#lg)"/><path d="M10 8v16M10 16l9-8M10 16l9 8" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="21" cy="8" r="2.2" fill="#fff"/><circle cx="21" cy="24" r="2.2" fill="#fff"/></svg>Kamol Latipov</a>
 <div><a href="#about">About</a><a href="#projects">Projects</a><a href="#demos">Live demos</a><a href="#skills">Skills</a><a href="#contact">Contact</a></div>
 </div></nav>
 
-<header id="top"><div class="wrap">
-<span class="tag">Aspiring AI Engineer</span>
-<h1>Hi, I'm <span>Kamol Latipov</span>.<br>I build machine learning models.</h1>
-<p>I train models on tables, images and text — and turn them into projects anyone can try. Applying to Artificial Intelligence programs.</p>
+<header id="top"><div class="wrap hero">
+<div>
+<span class="tag"><i class="dot"></i>Applying to AI programs</span>
+<h1>Hi, I’m <span>Kamol Latipov</span>.<br>I build machine learning models.</h1>
+<p>I train models on tables, images and text — and turn them into projects anyone can try right in the browser.</p>
 <a class="btn" href="#projects">View projects</a>
+<a class="btn alt" href="#demos">Try live demos</a>
 <a class="btn alt" href="https://github.com/Latipov-Kamol">GitHub</a>
+</div>
+<svg class="net" viewBox="0 0 320 300" aria-hidden="true"><line x1="40" y1="60" x2="120" y2="40"/><line x1="40" y1="60" x2="120" y2="100"/><line x1="40" y1="60" x2="120" y2="150"/><line x1="40" y1="60" x2="120" y2="200"/><line x1="40" y1="60" x2="120" y2="260"/><line x1="40" y1="120" x2="120" y2="40"/><line x1="40" y1="120" x2="120" y2="100"/><line x1="40" y1="120" x2="120" y2="150"/><line x1="40" y1="120" x2="120" y2="200"/><line x1="40" y1="120" x2="120" y2="260"/><line x1="40" y1="180" x2="120" y2="40"/><line x1="40" y1="180" x2="120" y2="100"/><line x1="40" y1="180" x2="120" y2="150"/><line x1="40" y1="180" x2="120" y2="200"/><line x1="40" y1="180" x2="120" y2="260"/><line x1="40" y1="240" x2="120" y2="40"/><line x1="40" y1="240" x2="120" y2="100"/><line x1="40" y1="240" x2="120" y2="150"/><line x1="40" y1="240" x2="120" y2="200"/><line x1="40" y1="240" x2="120" y2="260"/><line x1="120" y1="40" x2="200" y2="70"/><line x1="120" y1="40" x2="200" y2="130"/><line x1="120" y1="40" x2="200" y2="190"/><line x1="120" y1="40" x2="200" y2="230"/><line x1="120" y1="100" x2="200" y2="70"/><line x1="120" y1="100" x2="200" y2="130"/><line x1="120" y1="100" x2="200" y2="190"/><line x1="120" y1="100" x2="200" y2="230"/><line x1="120" y1="150" x2="200" y2="70"/><line x1="120" y1="150" x2="200" y2="130"/><line x1="120" y1="150" x2="200" y2="190"/><line x1="120" y1="150" x2="200" y2="230"/><line x1="120" y1="200" x2="200" y2="70"/><line x1="120" y1="200" x2="200" y2="130"/><line x1="120" y1="200" x2="200" y2="190"/><line x1="120" y1="200" x2="200" y2="230"/><line x1="120" y1="260" x2="200" y2="70"/><line x1="120" y1="260" x2="200" y2="130"/><line x1="120" y1="260" x2="200" y2="190"/><line x1="120" y1="260" x2="200" y2="230"/><line x1="200" y1="70" x2="280" y2="110"/><line x1="200" y1="70" x2="280" y2="190"/><line x1="200" y1="130" x2="280" y2="110"/><line x1="200" y1="130" x2="280" y2="190"/><line x1="200" y1="190" x2="280" y2="110"/><line x1="200" y1="190" x2="280" y2="190"/><line x1="200" y1="230" x2="280" y2="110"/><line x1="200" y1="230" x2="280" y2="190"/><circle cx="40" cy="60" r="7" style="animation-delay:0.00s"/><circle cx="40" cy="120" r="7" style="animation-delay:0.37s"/><circle cx="40" cy="180" r="7" style="animation-delay:0.74s"/><circle cx="40" cy="240" r="7" style="animation-delay:1.11s"/><circle cx="120" cy="40" r="7" style="animation-delay:1.48s"/><circle cx="120" cy="100" r="7" style="animation-delay:1.85s"/><circle cx="120" cy="150" r="7" style="animation-delay:2.22s"/><circle cx="120" cy="200" r="7" style="animation-delay:2.59s"/><circle cx="120" cy="260" r="7" style="animation-delay:2.96s"/><circle cx="200" cy="70" r="7" style="animation-delay:3.33s"/><circle cx="200" cy="130" r="7" style="animation-delay:0.30s"/><circle cx="200" cy="190" r="7" style="animation-delay:0.67s"/><circle cx="200" cy="230" r="7" style="animation-delay:1.04s"/><circle cx="280" cy="110" r="7" style="animation-delay:1.41s"/><circle cx="280" cy="190" r="7" style="animation-delay:1.78s"/></svg>
 </div></header>
 
 <section id="about"><div class="wrap">
@@ -116,7 +147,7 @@ input[type=file]{margin:4px 0 8px;font-size:13px;max-width:100%}
 <a class="btn alt" href="https://github.com/Latipov-Kamol">GitHub</a>
 </div></section>
 
-<footer><div class="wrap">© 2026 Kamol Latipov</div></footer>
+<footer><div class="wrap"><a href="https://github.com/Latipov-Kamol">GitHub</a><a href="mailto:j01097127@gmail.com">Email</a><div style="margin-top:8px">© 2026 Kamol Latipov</div></div></footer>
 <script>
 (function(){
 const $=id=>document.getElementById(id);
@@ -160,7 +191,7 @@ const box=document.getElementById('plist');
 fetch('projects.json').then(r=>r.json()).then(list=>{
 box.innerHTML=list.map((p,i)=>{
 const n=String(i+1).padStart(2,'0');
-const links=p.soon?'<a href="#">Coming soon</a>':(p.code?'<a href="'+esc(p.code)+'">Code →</a>':'')+(p.demo?'<a href="'+esc(p.demo)+'">Try it live →</a>':'');
+const links=p.soon?'<a class="g" href="#">Coming soon</a>':(p.demo?'<a class="p" href="'+esc(p.demo)+'">Try it live →</a>':'')+(p.code?'<a class="g" href="'+esc(p.code)+'">Code ↗</a>':'');
 return '<div class="card'+(p.soon?' soon':'')+'"><span class="num">PROJECT '+n+(p.kind?' · '+esc(p.kind):'')+'</span><h3>'+esc(p.title)+'</h3><p>'+esc(p.text||'')+'</p>'
 +(p.stat?'<div class="stat">'+esc(p.stat).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>')+'</div>':'')
 +'<div class="chips">'+(p.tags||[]).map(t=>'<span class="chip">'+esc(t)+'</span>').join('')+'</div><div class="links">'+links+'</div></div>'}).join('')
