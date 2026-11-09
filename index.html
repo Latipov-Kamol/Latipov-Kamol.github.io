@@ -3,151 +3,171 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%235b5bf0'/%3E%3Cpath d='M10 8v16M10 16l9-8M10 16l9 8' stroke='white' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E">
-<title>Kamol Latipov — AI & Data Science Portfolio</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23c2410c'/%3E%3Ctext x='16' y='21.5' font-family='monospace' font-size='15' font-weight='700' fill='white' text-anchor='middle'%3EKL%3C/text%3E%3C/svg%3E">
+<title>Kamol Latipov — Portfolio</title>
 <style>
-:root{--bg:#f5f6fb;--card:#fff;--text:#12152b;--muted:#5a6182;--accent:#5b5bf0;--accent2:#12a8c4;--line:#e1e4f1;--nav:rgba(245,246,251,.78);--glow:rgba(91,91,240,.16);--shadow:0 10px 30px rgba(40,50,120,.10);--grad:linear-gradient(135deg,#5b5bf0,#12a8c4)}
-@media (prefers-color-scheme:dark){:root{--bg:#090b15;--card:#121528;--text:#eceefb;--muted:#9097bd;--accent:#8082ff;--accent2:#35d6ea;--line:#242849;--nav:rgba(9,11,21,.78);--glow:rgba(128,130,255,.20);--shadow:0 10px 34px rgba(0,0,0,.45);--grad:linear-gradient(135deg,#7476ff,#35d6ea)}}
+:root{--bg:#f3f0e8;--ink:#16140f;--muted:#6b665a;--line:#d6d0bf;--acc:#c2410c;--panel:#ebe6d9;--on:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#13120e;--ink:#efeadb;--muted:#9a9483;--line:#2d2b23;--acc:#ff8a57;--panel:#1b1a15;--on:#13120e}}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:70px}
-body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
-.wrap{max-width:1000px;margin:0 auto;padding:0 22px}
-a:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-nav{position:sticky;top:0;background:var(--nav);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line);z-index:5}
-nav .wrap{display:flex;justify-content:space-between;align-items:center;height:60px}
-nav a{color:var(--muted);text-decoration:none;margin-left:20px;font-size:14px;transition:color .2s}
-nav a:hover{color:var(--accent)}
-nav a.logo{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--text);margin:0;font-size:15px}
-.logo svg{width:32px;height:32px}
-header{position:relative;padding:84px 0 64px;overflow:hidden}
-header::before{content:"";position:absolute;inset:-20% -10% auto -10%;height:480px;background:radial-gradient(600px 300px at 20% 30%,var(--glow),transparent 70%),radial-gradient(500px 260px at 85% 10%,rgba(18,168,196,.14),transparent 70%);pointer-events:none}
-.hero{position:relative;display:grid;grid-template-columns:1.25fr .75fr;gap:30px;align-items:center}
-.tag{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:99px;padding:5px 14px;font-size:13px;color:var(--muted)}
-.dot{width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 0 rgba(34,197,94,.6);animation:pulse 2s infinite}
-@keyframes pulse{70%{box-shadow:0 0 0 8px rgba(34,197,94,0)}100%{box-shadow:0 0 0 0 rgba(34,197,94,0)}}
-h1{font-size:clamp(34px,6vw,58px);line-height:1.08;margin:20px 0 16px;letter-spacing:-.02em}
-h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-header p{max-width:560px;color:var(--muted);font-size:18px;margin:0 0 10px}
-.btn{display:inline-block;padding:11px 22px;border-radius:12px;background:var(--grad);color:#fff;text-decoration:none;font-weight:600;font-size:15px;margin:14px 10px 0 0;box-shadow:0 6px 18px var(--glow);transition:transform .2s,box-shadow .2s}
-.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px var(--glow)}
-.btn.alt{background:transparent;color:var(--text);border:1px solid var(--line);box-shadow:none}
-.btn.alt:hover{border-color:var(--accent);color:var(--accent)}
-.net{width:100%;height:auto;color:var(--accent)}
-.net line{stroke:currentColor;stroke-opacity:.22;stroke-width:1}
-.net circle{fill:var(--card);stroke:currentColor;stroke-width:1.6;animation:blink 3.4s ease-in-out infinite}
-@keyframes blink{50%{fill:currentColor;fill-opacity:.55}}
-@media (prefers-reduced-motion:reduce){.net circle,.dot{animation:none}}
-@media (max-width:800px){.hero{grid-template-columns:1fr}.net{display:none}header{padding:56px 0 40px}}
-section{padding:52px 0}
-h2{font-size:28px;margin:0 0 26px;letter-spacing:-.01em;display:flex;align-items:center;gap:12px}
-h2::before{content:"";width:5px;height:26px;border-radius:3px;background:var(--grad)}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:22px}
-.card{position:relative;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s,border-color .25s}
-.card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--accent)}
-.card h3{margin:8px 0 8px;font-size:20px}
-.card p{color:var(--muted);margin:0 0 14px;font-size:15px;flex:1}
-.num{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;font-weight:600;color:var(--accent);letter-spacing:.06em}
-.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
-.chip{font-size:12px;padding:3px 11px;border-radius:99px;background:var(--bg);border:1px solid var(--line);color:var(--muted)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+.serif{font-family:Georgia,"Iowan Old Style","Times New Roman",serif}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+a:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+nav{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;height:62px}
+.logo{display:flex;align-items:center;gap:12px;color:var(--ink);text-decoration:none;font-weight:600}
+.mark{display:inline-grid;place-items:center;width:34px;height:34px;background:var(--acc);color:var(--on);font:700 14px ui-monospace,Menlo,Consolas,monospace;letter-spacing:.02em;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.logo:hover .mark{transform:rotate(-8deg) scale(1.06)}
+nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0}
+nav ul a{position:relative;color:var(--muted);text-decoration:none;font-size:14px;padding:4px 0;transition:color .25s}
+nav ul a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:100%;background:var(--acc);transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+nav ul a:hover{color:var(--ink)}
+nav ul a:hover::after{transform:scaleX(1)}
+.btn{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border:1.5px solid var(--ink);color:var(--ink);text-decoration:none;font-weight:600;font-size:15px;cursor:pointer;transition:color .3s,transform .15s}
+.btn::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--ink);transform:translateY(101%);transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.btn:hover{color:var(--bg)}
+.btn:hover::before{transform:translateY(0)}
+.btn:active{transform:scale(.96)}
+.btn .ar{display:inline-block;transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+.btn:hover .ar{transform:translateX(4px)}
+.btn.solid{background:var(--acc);border-color:var(--acc);color:var(--on)}
+.btn.solid:hover{border-color:var(--ink);color:var(--bg)}
+.btn.sm{padding:8px 15px;font-size:14px}
+header{padding:88px 0 72px}
+.hero{display:flex;gap:56px;align-items:flex-end;justify-content:space-between}
+.intro{max-width:640px}
+.eyebrow{margin:0 0 22px;color:var(--muted);font-size:13px;letter-spacing:.12em;text-transform:uppercase}
+h1{margin:0 0 28px;font-weight:700;font-size:clamp(52px,10vw,118px);line-height:.94;letter-spacing:-.035em}
+.lead{margin:0 0 34px;font-size:19px;color:var(--muted);max-width:560px}
+.actions{display:flex;flex-wrap:wrap;gap:12px}
+.ph{margin:0;width:240px;flex:none}
+.ph img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;background:var(--panel)}
+.rise{opacity:0;transform:translateY(16px);animation:rise .8s cubic-bezier(.2,.7,.2,1) forwards}
+.d1{animation-delay:.08s}.d2{animation-delay:.18s}.d3{animation-delay:.3s}.d4{animation-delay:.42s}
+@keyframes rise{to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.rise{animation:none;opacity:1;transform:none}*{transition-duration:.01ms!important}}
+.sec{display:grid;grid-template-columns:190px 1fr;gap:40px;padding:68px 0;border-top:1px solid var(--line)}
+.lab{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-top:8px}
+.lab b{color:var(--acc);font-weight:600}
+h2{margin:0 0 30px;font-size:clamp(28px,4vw,40px);line-height:1.1;letter-spacing:-.02em}
+.row{display:grid;grid-template-columns:52px 1fr 230px;gap:20px;padding:30px 0;border-top:1px solid var(--line);transition:background .3s,padding .3s}
+.row:last-child{border-bottom:1px solid var(--line)}
+.row:hover{background:var(--panel);padding-left:16px;padding-right:16px}
+.row .n{color:var(--acc);font-size:14px;padding-top:6px}
+.row h3{margin:0 0 6px;font-size:23px;line-height:1.2}
+.row p{margin:0 0 10px;color:var(--muted);font-size:15px}
+.tags{color:var(--muted);font-size:13px}
+.stat{font-size:14px;margin-bottom:14px}
+.stat b{color:var(--acc)}
 .links{display:flex;flex-wrap:wrap;gap:10px}
-.links a{display:inline-flex;align-items:center;padding:9px 16px;border-radius:10px;font-size:14px;font-weight:600;text-decoration:none;transition:transform .2s,box-shadow .2s,border-color .2s}
-.links a.p{background:var(--grad);color:#fff;box-shadow:0 4px 14px var(--glow)}
-.links a.g{border:1px solid var(--line);color:var(--text)}
-.links a:hover{transform:translateY(-2px)}
-.links a.p:hover{box-shadow:0 8px 20px var(--glow)}
-.links a.g:hover{border-color:var(--accent);color:var(--accent)}
-.stat{font-size:14px;margin-bottom:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
-.stat b{color:var(--accent2)}
-.soon{opacity:.65;border-style:dashed}
-.soon:hover{transform:none;box-shadow:none;border-color:var(--line)}
-.sub{color:var(--muted);margin:-14px 0 24px}
-input[type=number]{width:100%;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--text);font-size:14px}
-input[type=number]:focus{border-color:var(--accent)}
-input[type=file]{margin:4px 0 8px;font-size:13px;max-width:100%;color:var(--muted)}
-input[type=file]::file-selector-button{padding:7px 14px;margin-right:10px;border-radius:9px;border:0;background:var(--grad);color:#fff;font-weight:600;cursor:pointer}
-.chk{font-size:13px;color:var(--muted);display:block;margin-bottom:10px}
-#fprev{width:112px;height:112px;image-rendering:pixelated;border:1px solid var(--line);border-radius:10px;background:#000;margin-bottom:10px}
-.out{font-size:15px;min-height:24px}
+.soon{display:inline-block;padding:6px 12px;border:1.5px dashed var(--line);color:var(--muted);font-size:13px}
+.sub{color:var(--muted);margin:-14px 0 28px}
+.demos{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line)}
+.demo{padding:28px}
+.demo+.demo{border-left:1px solid var(--line)}
+.demo h3{margin:6px 0 8px;font-size:24px}
+.demo p{margin:0 0 16px;color:var(--muted);font-size:15px}
+.num{color:var(--acc);font-size:12px;letter-spacing:.08em}
+input[type=number]{width:100%;padding:9px 11px;border:1.5px solid var(--line);border-radius:0;background:var(--bg);color:var(--ink);font-size:14px;transition:border-color .25s}
+input[type=number]:hover,input[type=number]:focus{border-color:var(--acc)}
+input[type=file]{margin:4px 0 10px;font-size:13px;max-width:100%;color:var(--muted)}
+input[type=file]::file-selector-button{padding:8px 16px;margin-right:12px;border:0;background:var(--acc);color:var(--on);font-weight:600;cursor:pointer;transition:background .25s,color .25s,transform .15s}
+input[type=file]::file-selector-button:hover{background:var(--ink);color:var(--bg)}
+input[type=file]::file-selector-button:active{transform:scale(.96)}
+.chk{font-size:13px;color:var(--muted);display:block;margin-bottom:12px;cursor:pointer}
+#fprev{width:112px;height:112px;image-rendering:pixelated;border:1px solid var(--line);background:#000;margin-bottom:12px}
+.out{font-size:15px;min-height:26px}
 .bar{display:flex;align-items:center;gap:8px;margin:5px 0;font-size:14px}
-.bar i{display:block;height:8px;border-radius:4px;background:var(--grad)}
+.bar i{display:block;height:8px;background:var(--acc);transition:width .4s}
 .bar span:first-child{width:96px}
-.form{display:grid;grid-template-columns:1fr 1fr;gap:8px 12px;margin-bottom:12px}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:10px 14px;margin-bottom:16px}
 .form label{font-size:12px;color:var(--muted)}
-.price{font-size:30px;font-weight:700;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-.skills{display:flex;flex-wrap:wrap;gap:10px}
-.skills .chip{font-size:14px;padding:7px 15px;color:var(--text);background:var(--card);transition:border-color .2s,color .2s}
-.skills .chip:hover{border-color:var(--accent);color:var(--accent)}
-footer{padding:40px 0;border-top:1px solid var(--line);color:var(--muted);font-size:14px;text-align:center}
-footer a{color:var(--accent);text-decoration:none;margin:0 8px}
+.price{font-family:Georgia,serif;font-size:36px;font-weight:700;color:var(--acc)}
+.about{max-width:640px;font-size:18px;margin:0 0 26px}
+.skills{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px 22px;color:var(--muted)}
+.skills li::before{content:"/ ";color:var(--acc)}
+.mail{position:relative;display:inline-block;font-size:clamp(22px,4vw,38px);color:var(--ink);text-decoration:none;margin-bottom:26px;word-break:break-all}
+.mail::after{content:"";position:absolute;left:0;bottom:-2px;height:3px;width:100%;background:var(--acc);transform:scaleX(.18);transform-origin:left;transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+.mail:hover::after{transform:scaleX(1)}
+footer{padding:30px 0 40px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+footer a{color:var(--muted);text-decoration:none;margin-left:18px;transition:color .25s}
+footer a:hover{color:var(--acc)}
+@media (max-width:820px){
+.hero{flex-direction:column;align-items:flex-start;gap:32px}.ph{width:180px}
+.sec{grid-template-columns:1fr;gap:6px;padding:52px 0}
+.row{grid-template-columns:36px 1fr}.row .side{grid-column:2}
+.demos{grid-template-columns:1fr}.demo+.demo{border-left:0;border-top:1px solid var(--line)}
+header{padding:56px 0 48px}}
 </style>
 </head>
 <body>
 <nav><div class="wrap">
-<a class="logo" href="#top"><svg viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5b5bf0"/><stop offset="1" stop-color="#12a8c4"/></linearGradient></defs><rect width="32" height="32" rx="9" fill="url(#lg)"/><path d="M10 8v16M10 16l9-8M10 16l9 8" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="21" cy="8" r="2.2" fill="#fff"/><circle cx="21" cy="24" r="2.2" fill="#fff"/></svg>Kamol Latipov</a>
-<div><a href="#about">About</a><a href="#projects">Projects</a><a href="#demos">Live demos</a><a href="#skills">Skills</a><a href="#contact">Contact</a></div>
+<a class="logo" href="#top"><span class="mark">KL</span>Kamol Latipov</a>
+<ul><li><a href="#work">Work</a></li><li><a href="#demos">Demos</a></li><li><a href="#about">About</a></li><li><a href="#contact">Contact</a></li></ul>
 </div></nav>
 
 <header id="top"><div class="wrap hero">
-<div>
-<span class="tag"><i class="dot"></i>Applying to AI programs</span>
-<h1>Hi, I’m <span>Kamol Latipov</span>.<br>I build machine learning models.</h1>
-<p>I train models on tables, images and text — and turn them into projects anyone can try right in the browser.</p>
-<a class="btn" href="#projects">View projects</a>
-<a class="btn alt" href="#demos">Try live demos</a>
-<a class="btn alt" href="https://github.com/Latipov-Kamol">GitHub</a>
+<div class="intro">
+<p class="eyebrow mono rise d1">Portfolio · 2026</p>
+<h1 class="serif rise d2">Kamol<br>Latipov</h1>
+<p class="lead rise d3">My background is mathematics education. I use it to build machine learning projects and publish them, so anyone can open a link and test the models themselves.</p>
+<div class="actions rise d4">
+<a class="btn solid" href="#work"><span>See the work</span><span class="ar">↓</span></a>
+<a class="btn" href="#contact"><span>Get in touch</span><span class="ar">→</span></a>
 </div>
-<svg class="net" viewBox="0 0 320 300" aria-hidden="true"><line x1="40" y1="60" x2="120" y2="40"/><line x1="40" y1="60" x2="120" y2="100"/><line x1="40" y1="60" x2="120" y2="150"/><line x1="40" y1="60" x2="120" y2="200"/><line x1="40" y1="60" x2="120" y2="260"/><line x1="40" y1="120" x2="120" y2="40"/><line x1="40" y1="120" x2="120" y2="100"/><line x1="40" y1="120" x2="120" y2="150"/><line x1="40" y1="120" x2="120" y2="200"/><line x1="40" y1="120" x2="120" y2="260"/><line x1="40" y1="180" x2="120" y2="40"/><line x1="40" y1="180" x2="120" y2="100"/><line x1="40" y1="180" x2="120" y2="150"/><line x1="40" y1="180" x2="120" y2="200"/><line x1="40" y1="180" x2="120" y2="260"/><line x1="40" y1="240" x2="120" y2="40"/><line x1="40" y1="240" x2="120" y2="100"/><line x1="40" y1="240" x2="120" y2="150"/><line x1="40" y1="240" x2="120" y2="200"/><line x1="40" y1="240" x2="120" y2="260"/><line x1="120" y1="40" x2="200" y2="70"/><line x1="120" y1="40" x2="200" y2="130"/><line x1="120" y1="40" x2="200" y2="190"/><line x1="120" y1="40" x2="200" y2="230"/><line x1="120" y1="100" x2="200" y2="70"/><line x1="120" y1="100" x2="200" y2="130"/><line x1="120" y1="100" x2="200" y2="190"/><line x1="120" y1="100" x2="200" y2="230"/><line x1="120" y1="150" x2="200" y2="70"/><line x1="120" y1="150" x2="200" y2="130"/><line x1="120" y1="150" x2="200" y2="190"/><line x1="120" y1="150" x2="200" y2="230"/><line x1="120" y1="200" x2="200" y2="70"/><line x1="120" y1="200" x2="200" y2="130"/><line x1="120" y1="200" x2="200" y2="190"/><line x1="120" y1="200" x2="200" y2="230"/><line x1="120" y1="260" x2="200" y2="70"/><line x1="120" y1="260" x2="200" y2="130"/><line x1="120" y1="260" x2="200" y2="190"/><line x1="120" y1="260" x2="200" y2="230"/><line x1="200" y1="70" x2="280" y2="110"/><line x1="200" y1="70" x2="280" y2="190"/><line x1="200" y1="130" x2="280" y2="110"/><line x1="200" y1="130" x2="280" y2="190"/><line x1="200" y1="190" x2="280" y2="110"/><line x1="200" y1="190" x2="280" y2="190"/><line x1="200" y1="230" x2="280" y2="110"/><line x1="200" y1="230" x2="280" y2="190"/><circle cx="40" cy="60" r="7" style="animation-delay:0.00s"/><circle cx="40" cy="120" r="7" style="animation-delay:0.37s"/><circle cx="40" cy="180" r="7" style="animation-delay:0.74s"/><circle cx="40" cy="240" r="7" style="animation-delay:1.11s"/><circle cx="120" cy="40" r="7" style="animation-delay:1.48s"/><circle cx="120" cy="100" r="7" style="animation-delay:1.85s"/><circle cx="120" cy="150" r="7" style="animation-delay:2.22s"/><circle cx="120" cy="200" r="7" style="animation-delay:2.59s"/><circle cx="120" cy="260" r="7" style="animation-delay:2.96s"/><circle cx="200" cy="70" r="7" style="animation-delay:3.33s"/><circle cx="200" cy="130" r="7" style="animation-delay:0.30s"/><circle cx="200" cy="190" r="7" style="animation-delay:0.67s"/><circle cx="200" cy="230" r="7" style="animation-delay:1.04s"/><circle cx="280" cy="110" r="7" style="animation-delay:1.41s"/><circle cx="280" cy="190" r="7" style="animation-delay:1.78s"/></svg>
+</div>
+<figure class="ph rise d4"><img src="photo.jpg" alt="Kamol Latipov" onerror="this.parentNode.style.display='none'"></figure>
 </div></header>
 
-<section id="about"><div class="wrap">
-<h2>About me</h2>
-<p style="max-width:700px;color:var(--muted)">I work in mathematics education, where I create worksheets and tests. That background gave me a strong feel for numbers and logic, and now I apply it to machine learning: regression, deep learning and NLP. Each project below covers the full path — data, model, evaluation and a public write-up.</p>
-</div></section>
+<section class="sec wrap" id="work">
+<div class="lab mono"><b>01</b> — Work</div>
+<div><h2 class="serif">Selected projects</h2>
+<div id="plist"><p class="sub">Loading projects…</p></div></div>
+</section>
 
-<section id="projects"><div class="wrap">
-<h2>Projects</h2>
-<div class="grid" id="plist"><p class="sub">Loading projects…</p></div>
-</div></section>
-
-<section id="demos"><div class="wrap">
-<h2>Live demos</h2>
-<p class="sub">Both models run right in your browser — nothing is uploaded anywhere.</p>
-<div class="grid">
-<div class="card" id="demo-housing">
-<span class="num">DEMO · PROJECT 01</span>
-<h3>Estimate a house price</h3>
+<section class="sec wrap" id="demos">
+<div class="lab mono"><b>02</b> — Demos</div>
+<div><h2 class="serif">Try the models</h2>
+<p class="sub">Both models run in your browser. Nothing is uploaded anywhere.</p>
+<div class="demos">
+<div class="demo" id="demo-housing">
+<span class="num mono">DEMO · PROJECT 01</span>
+<h3 class="serif">Estimate a house price</h3>
 <p>Enter the features of a California district and the Random Forest predicts the median house value. Trained on 1990 US census data for California only, so it is meaningful for California districts, not other regions.</p>
 <div class="form" id="hform"></div>
-<a class="btn" href="#demo-housing" id="hbtn" style="align-self:flex-start;margin:0 0 12px">Predict</a>
-<div id="hout" class="out"></div>
-<div class="card" id="demo-fashion">
-<span class="num">DEMO · PROJECT 02</span>
-<h3>Recognize clothing</h3>
+<a class="btn solid" href="#demo-housing" id="hbtn"><span>Predict</span><span class="ar">→</span></a>
+<div id="hout" class="out" style="margin-top:14px"></div>
+</div>
+<div class="demo" id="demo-fashion">
+<span class="num mono">DEMO · PROJECT 02</span>
+<h3 class="serif">Recognize clothing</h3>
 <p>Upload a photo of one clothing item (shirt, shoe, bag…) on a plain background.</p>
 <input type="file" id="fimg" accept="image/*">
 <label class="chk"><input type="checkbox" id="finv" checked> auto-invert light backgrounds</label>
 <canvas id="fprev" width="28" height="28"></canvas>
 <div id="fout" class="out">Waiting for an image…</div>
 </div>
-</div>
-</div>
-</div></section>
+</div></div>
+</section>
 
-<section id="skills"><div class="wrap">
-<h2>Skills</h2>
-<div class="skills">
-<span class="chip">Python</span><span class="chip">PyTorch</span><span class="chip">scikit-learn</span><span class="chip">pandas</span><span class="chip">NumPy</span><span class="chip">Matplotlib / Seaborn</span><span class="chip">Google Colab</span><span class="chip">Git & GitHub</span><span class="chip">Mathematics</span>
-</div>
-</div></section>
+<section class="sec wrap" id="about">
+<div class="lab mono"><b>03</b> — About</div>
+<div><h2 class="serif">Numbers first</h2>
+<p class="about">I create worksheets and tests in mathematics education. That work gave me a feel for numbers and logic, and now I apply it to regression, image classification and text analysis. Each project covers the full path: data, model, evaluation and a public write-up.</p>
+<ul class="skills mono"><li>Python</li><li>PyTorch</li><li>scikit-learn</li><li>pandas</li><li>NumPy</li><li>Matplotlib</li><li>Google Colab</li><li>Git &amp; GitHub</li></ul></div>
+</section>
 
-<section id="contact"><div class="wrap">
-<h2>Contact</h2>
-<p style="color:var(--muted)">Want to talk about a project or collaboration?</p>
-<a class="btn" href="mailto:j01097127@gmail.com">Email me</a>
-<a class="btn alt" href="https://github.com/Latipov-Kamol">GitHub</a>
-</div></section>
+<section class="sec wrap" id="contact">
+<div class="lab mono"><b>04</b> — Contact</div>
+<div><h2 class="serif">Write to me</h2>
+<a class="mail serif" href="mailto:j01097127@gmail.com">j01097127@gmail.com</a><br>
+<a class="btn" href="https://github.com/Latipov-Kamol"><span>GitHub</span><span class="ar">↗</span></a></div>
+</section>
 
-<footer><div class="wrap"><a href="https://github.com/Latipov-Kamol">GitHub</a><a href="mailto:j01097127@gmail.com">Email</a><div style="margin-top:8px">© 2026 Kamol Latipov</div></div></footer>
+<footer><div class="wrap"><span>© 2026 Kamol Latipov</span><span><a href="https://github.com/Latipov-Kamol">GitHub</a><a href="mailto:j01097127@gmail.com">Email</a></span></div></footer>
 <script>
 (function(){
 const $=id=>document.getElementById(id);
@@ -191,10 +211,10 @@ const box=document.getElementById('plist');
 fetch('projects.json').then(r=>r.json()).then(list=>{
 box.innerHTML=list.map((p,i)=>{
 const n=String(i+1).padStart(2,'0');
-const links=p.soon?'<a class="g" href="#">Coming soon</a>':(p.demo?'<a class="p" href="'+esc(p.demo)+'">Try it live →</a>':'')+(p.code?'<a class="g" href="'+esc(p.code)+'">Code ↗</a>':'');
-return '<div class="card'+(p.soon?' soon':'')+'"><span class="num">PROJECT '+n+(p.kind?' · '+esc(p.kind):'')+'</span><h3>'+esc(p.title)+'</h3><p>'+esc(p.text||'')+'</p>'
-+(p.stat?'<div class="stat">'+esc(p.stat).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>')+'</div>':'')
-+'<div class="chips">'+(p.tags||[]).map(t=>'<span class="chip">'+esc(t)+'</span>').join('')+'</div><div class="links">'+links+'</div></div>'}).join('')
+const demo=p.demo?'<a class="btn sm solid" href="'+esc(p.demo)+'"><span>Try it live</span><span class="ar">→</span></a>':'';
+const code=p.code?'<a class="btn sm" href="'+esc(p.code)+'"><span>Code</span><span class="ar">↗</span></a>':'';
+const side=p.soon?'<span class="soon mono">In progress</span>':(p.stat?'<div class="stat mono">'+esc(p.stat).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>')+'</div>':'')+'<div class="links">'+demo+code+'</div>';
+return '<div class="row"><span class="n mono">'+n+'</span><div><h3 class="serif">'+esc(p.title)+'</h3><p>'+esc(p.text||'')+'</p><div class="tags mono">'+(p.kind?esc(p.kind)+' · ':'')+(p.tags||[]).map(esc).join(' · ')+'</div></div><div class="side">'+side+'</div></div>'}).join('')
 }).catch(()=>{box.innerHTML='<p class="sub">Could not load projects.json. Check the file for a missing comma or quote.</p>'});
 })();
 </script>
