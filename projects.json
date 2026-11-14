@@ -4,58 +4,60 @@
     "title": "California Housing Price Prediction",
     "text": "Predicts median house prices from census features. Compared Linear Regression with Random Forest after EDA and feature scaling.",
     "stat": "Random Forest: R² **≈ 0.805** · RMSE **≈ 0.506**",
-    "tags": [
-      "Python",
-      "scikit-learn",
-      "pandas",
-      "seaborn"
-    ],
+    "tags": ["Python", "scikit-learn", "pandas", "seaborn"],
     "code": "https://github.com/Latipov-Kamol/California-Housing-Price-Prediction",
-    "demo": "#demo-housing"
+    "demo": "#demo-housing",
+    "i18n": {
+      "ru": {
+        "kind": "ТАБЛИЧНОЕ ML",
+        "title": "Прогноз цен на жильё в Калифорнии",
+        "text": "Предсказывает медианные цены на жильё по данным переписи. Сравнил линейную регрессию со случайным лесом после EDA и масштабирования признаков."
+      },
+      "uz": {
+        "kind": "JADVALLI ML",
+        "title": "Kaliforniyada uy narxlarini bashorat qilish",
+        "text": "Aholi ro‘yxati ma’lumotlari asosida uylarning o‘rtacha narxini bashorat qiladi. EDA va belgilarni masshtablashdan so‘ng chiziqli regressiya Random Forest bilan solishtirildi."
+      }
+    }
   },
   {
     "kind": "COMPUTER VISION",
     "title": "Fashion-MNIST CNN Classifier",
     "text": "Convolutional neural network in PyTorch that recognizes 10 types of clothing, including inference on custom uploaded images.",
     "stat": "Test accuracy: **90.2%**",
-    "tags": [
-      "PyTorch",
-      "CNN",
-      "Torchvision"
-    ],
+    "tags": ["PyTorch", "CNN", "Torchvision"],
     "code": "https://github.com/Latipov-Kamol/Fashion-MNIST-CNN-Classifier",
-    "demo": "#demo-fashion"
+    "demo": "#demo-fashion",
+    "i18n": {
+      "ru": {
+        "kind": "КОМПЬЮТЕРНОЕ ЗРЕНИЕ",
+        "title": "Классификатор Fashion-MNIST на CNN",
+        "text": "Свёрточная нейросеть на PyTorch, которая распознаёт 10 видов одежды, в том числе на ваших загруженных фото.",
+        "stat": "Точность на тесте: **90.2%**"
+      },
+      "uz": {
+        "kind": "KOMPYUTER KO‘RISHI",
+        "title": "Fashion-MNIST CNN klassifikatori",
+        "text": "PyTorch’dagi konvolyutsion neyron tarmoq 10 turdagi kiyimni aniqlaydi, jumladan siz yuklagan rasmlarda ham ishlaydi.",
+        "stat": "Test aniqligi: **90.2%**"
+      }
+    }
   },
   {
-    "kind": "NLP",
-    "title": "Sentiment Analysis with Transformers",
-    "text": "In progress: classifying text reviews as positive or negative with modern language models.",
-    "tags": [
-      "Hugging Face",
-      "Transformers"
-    ],
-    "soon": true
-  },
-  {
-  "kind": "NLP",
-  "title": "Название проекта",
-  "text": "Короткое описание, 1–2 предложения.",
-  "stat": "Accuracy: **92%**",
-  "tags": ["Python", "PyTorch"],
-  "code": "https://github.com/Latipov-Kamol/ИМЯ-РЕПОЗИТОРИЯ"
-},
-    {
     "kind": "NLP",
     "title": "Sentiment Analysis with Transformers",
     "text": "In progress: classifying text reviews as positive or negative with modern language models.",
     "tags": ["Hugging Face", "Transformers"],
-    "soon": true
-  },
-  {
-    "kind": "NEW",
-    "title": "Название нового проекта",
-    "text": "Короткое описание.",
-    "tags": ["Python"],
-    "code": "https://github.com/Latipov-Kamol/ИМЯ-РЕПОЗИТОРИЯ"
+    "soon": true,
+    "i18n": {
+      "ru": {
+        "title": "Анализ тональности на трансформерах",
+        "text": "В работе: классификация отзывов на положительные и отрицательные с помощью современных языковых моделей."
+      },
+      "uz": {
+        "title": "Transformerlar yordamida sentiment tahlili",
+        "text": "Jarayonda: zamonaviy til modellari yordamida sharhlarni ijobiy va salbiyga ajratish."
+      }
+    }
   }
 ]

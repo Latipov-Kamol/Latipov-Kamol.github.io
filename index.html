@@ -2,220 +2,642 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23c2410c'/%3E%3Ctext x='16' y='21.5' font-family='monospace' font-size='15' font-weight='700' fill='white' text-anchor='middle'%3EKL%3C/text%3E%3C/svg%3E">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Kamol Latipov — machine learning and full-stack projects with live in-browser demos.">
+<meta name="theme-color" content="#F4F4F2">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23FF4F00'/%3E%3Ctext x='16' y='21.5' font-family='monospace' font-size='15' font-weight='700' fill='white' text-anchor='middle'%3EKL%3C/text%3E%3C/svg%3E">
 <title>Kamol Latipov — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<!-- Hubot Sans (by GitHub) — headings, Latin -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hubot+Sans:wght@400;500;700;800;900&display=swap">
+<!-- Manrope — Cyrillic glyphs for headings/body (Russian) -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap">
+<!-- JetBrains Mono — mono fallback + Cyrillic -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap">
+<script>
+/* Theme, language and device power detection run before paint */
+(function(){
+var d=document.documentElement;
+try{var t=localStorage.getItem('kl-theme');if(t)d.setAttribute('data-theme',t)}catch(e){}
+var L=null;try{L=localStorage.getItem('kl-lang')}catch(e){}
+if(!L){var nl=(navigator.language||'en').slice(0,2).toLowerCase();L=nl==='ru'?'ru':nl==='uz'?'uz':'en'}
+d.setAttribute('lang',L);
+var n=navigator,c=n.connection||{},rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+var lite=rm||c.saveData||/2g|3g/.test(c.effectiveType||'')||(n.hardwareConcurrency&&n.hardwareConcurrency<=4)||(n.deviceMemory&&n.deviceMemory<4);
+if(lite)d.classList.add('lite');
+var seen=false;try{seen=sessionStorage.getItem('kl-seen')}catch(e){}
+if(lite||seen)d.classList.add('skip');
+})();
+</script>
 <style>
-:root{--bg:#f3f0e8;--ink:#16140f;--muted:#6b665a;--line:#d6d0bf;--acc:#c2410c;--panel:#ebe6d9;--on:#fff}
-@media (prefers-color-scheme:dark){:root{--bg:#13120e;--ink:#efeadb;--muted:#9a9483;--line:#2d2b23;--acc:#ff8a57;--panel:#1b1a15;--on:#13120e}}
+/* Monaspace Neon (by GitHub Next) — labels, numbers, UI */
+@font-face{font-family:"Monaspace Neon";src:url("https://cdn.jsdelivr.net/gh/githubnext/monaspace@v1.000/fonts/webfonts/MonaspaceNeon-Regular.woff") format("woff");font-weight:400;font-display:swap}
+@font-face{font-family:"Monaspace Neon";src:url("https://cdn.jsdelivr.net/gh/githubnext/monaspace@v1.000/fonts/webfonts/MonaspaceNeon-SemiBold.woff") format("woff");font-weight:600;font-display:swap}
+
+:root{
+/* light: white with a grey lean */
+--bg:#F4F4F2;--ink:#1C1D1F;--acc:#FF4F00;--muted:#7C7D80;--line:#D9D9D5;--panel:#EAEAE7;--on:#FFFFFF;
+--grid:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Cpath d='M32 0H0V32' fill='none' stroke='%23E6E6E2'/%3E%3C/svg%3E");
+--tex:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .035 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+--fh:"Hubot Sans","Manrope","Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
+--fm:"Monaspace Neon","JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+--ease:cubic-bezier(.2,.7,.2,1);--spring:cubic-bezier(.34,1.56,.64,1);
+--sw:240px;
+}
+/* dark: graphite with soft grain */
+html[data-theme=dark]{
+--bg:#26282B;--ink:#E6E6E3;--acc:#FF6A2B;--muted:#9A9CA0;--line:#3A3D42;--panel:#2E3034;--on:#26282B;
+--grid:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Cpath d='M32 0H0V32' fill='none' stroke='%232C2E32'/%3E%3C/svg%3E");
+--tex:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+@media (prefers-color-scheme:dark){html:not([data-theme=light]){
+--bg:#26282B;--ink:#E6E6E3;--acc:#FF6A2B;--muted:#9A9CA0;--line:#3A3D42;--panel:#2E3034;--on:#26282B;
+--grid:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Cpath d='M32 0H0V32' fill='none' stroke='%232C2E32'/%3E%3C/svg%3E");
+--tex:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}}
+
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:70px}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
-.serif{font-family:Georgia,"Iowan Old Style","Times New Roman",serif}
-.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
-a:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
-nav{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
-nav .wrap{display:flex;justify-content:space-between;align-items:center;height:62px}
-.logo{display:flex;align-items:center;gap:12px;color:var(--ink);text-decoration:none;font-weight:600}
-.mark{display:inline-grid;place-items:center;width:34px;height:34px;background:var(--acc);color:var(--on);font:700 14px ui-monospace,Menlo,Consolas,monospace;letter-spacing:.02em;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
-.logo:hover .mark{transform:rotate(-8deg) scale(1.06)}
-nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0}
-nav ul a{position:relative;color:var(--muted);text-decoration:none;font-size:14px;padding:4px 0;transition:color .25s}
-nav ul a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:100%;background:var(--acc);transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.2,.7,.2,1)}
-nav ul a:hover{color:var(--ink)}
-nav ul a:hover::after{transform:scaleX(1)}
-.btn{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border:1.5px solid var(--ink);color:var(--ink);text-decoration:none;font-weight:600;font-size:15px;cursor:pointer;transition:color .3s,transform .15s}
-.btn::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--ink);transform:translateY(101%);transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+html{-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}
+body{margin:0;background-color:var(--bg);background-image:var(--tex),var(--grid);color:var(--ink);font:16px/1.65 var(--fh);transition:background-color .45s,color .45s}
+a,button,input,label{-webkit-tap-highlight-color:transparent}
+a:focus-visible,button:focus-visible,input:focus-visible,label:focus-within{outline:2px solid var(--acc);outline-offset:3px}
+::selection{background:var(--acc);color:var(--on)}
+
+/* ---------- loader ---------- */
+#ld{position:fixed;inset:0;z-index:100;background:var(--bg);display:grid;place-items:center;transition:opacity .45s var(--ease),visibility .45s}
+#ld.out{opacity:0;visibility:hidden}
+.skip #ld{display:none}
+#ld .box{display:grid;justify-items:center;gap:14px}
+#ld svg{width:72px;height:72px;overflow:visible}
+#ld rect{fill:none;stroke:var(--acc);stroke-width:3;stroke-dasharray:264;stroke-dashoffset:264;animation:draw .6s var(--ease) forwards}
+#ld text{font:700 22px var(--fm);fill:var(--ink);opacity:0;animation:fade .3s .45s forwards}
+#ld small{font:11px var(--fm);letter-spacing:.2em;color:var(--muted);opacity:0;animation:fade .3s .3s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes fade{to{opacity:1}}
+
+/* ---------- lamp pull-cord theme switch ---------- */
+.lamp{position:fixed;top:0;right:30px;z-index:30;display:flex;flex-direction:column;align-items:center;width:48px;padding:0 0 10px;border:0;background:none;color:var(--ink);cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none;--pull:0px}
+.lamp .mount{width:24px;height:7px;background:var(--ink);transition:background-color .45s}
+.lamp .sw{display:flex;flex-direction:column;align-items:center;transform-origin:50% 0}
+.lamp .cl{width:2px;height:calc(58px + var(--pull));background:var(--ink);transition:background-color .45s}
+.lamp .bead{position:relative;width:16px;height:26px;border:2px solid var(--ink);border-radius:8px;background:var(--acc);transition:background-color .45s,border-color .45s}
+.lamp .bead::after{content:"";position:absolute;left:50%;top:5px;width:2px;height:10px;margin-left:-1px;background:var(--ink);opacity:.35}
+.lamp .pl{margin-top:7px;font:600 9px var(--fm);letter-spacing:.18em;color:var(--muted);white-space:nowrap}
+.lamp.spring .cl{transition:height .65s var(--spring),background-color .45s}
+.lamp:hover .sw{animation:sway 1.5s var(--ease)}
+.lamp.drag{cursor:grabbing}
+.lamp.drag .sw{animation:none}
+@keyframes sway{20%{transform:rotate(7deg)}50%{transform:rotate(-5deg)}75%{transform:rotate(2.5deg)}100%{transform:none}}
+
+/* ---------- sidebar ---------- */
+.side{position:fixed;left:0;top:0;bottom:0;width:var(--sw);z-index:20;display:flex;flex-direction:column;padding:22px 16px;background-color:var(--bg);background-image:var(--tex);border-right:1px solid var(--line);transition:background-color .45s}
+.brand{position:relative;overflow:hidden;display:flex;align-items:center;gap:12px;margin:0 6px 40px;color:var(--ink);text-decoration:none;font-weight:800;font-size:15px;letter-spacing:-.01em;line-height:1.15;transition:transform .45s var(--spring)}
+.brand small{display:block;font:400 11px var(--fm);color:var(--muted);letter-spacing:.06em}
+.mark{display:inline-grid;place-items:center;width:38px;height:38px;flex:none;background:var(--acc);color:#fff;font:600 14px var(--fm);transition:transform .45s var(--spring)}
+.brand:hover .mark{transform:rotate(-8deg) scale(1.08)}
+.navl{position:relative;list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px}
+#ind{position:absolute;left:0;top:0;width:0;height:0;z-index:0;background:var(--acc);box-shadow:4px 4px 0 var(--ink);transition:transform .6s var(--spring),width .4s var(--ease),height .4s var(--ease),box-shadow .3s}
+#ind.lift{animation:shadowlift .6s var(--ease)}
+@keyframes shadowlift{40%{box-shadow:7px 10px 0 var(--ink)}}
+.ni{position:relative;z-index:1;overflow:hidden;display:flex;align-items:center;gap:12px;padding:11px 12px;color:var(--muted);text-decoration:none;font:400 14px var(--fm);transition:color .3s,transform .45s var(--spring)}
+.ni svg{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linejoin:round;stroke-linecap:round}
+.ni .ix{margin-left:auto;font-size:11px;opacity:.75}
+.ni:hover{color:var(--ink)}
+.ni.on,.ni.on:hover{color:var(--on)}
+.ni.lift{animation:lift .6s var(--ease)}
+@keyframes lift{0%{transform:none}40%{transform:translateY(-5px)}100%{transform:none}}
+.sfoot{margin-top:auto;display:flex;flex-direction:column;gap:10px;padding:0 4px}
+.lgs{display:flex;border:1.5px solid var(--line)}
+.lg{position:relative;overflow:hidden;flex:1;min-height:36px;padding:0;border:0;background:transparent;color:var(--muted);font:600 11px var(--fm);letter-spacing:.08em;cursor:pointer;transition:background-color .3s,color .3s,transform .45s var(--spring)}
+.lg:hover{color:var(--ink)}
+.lg.on{background:var(--ink);color:var(--bg)}
+.srow{display:flex;gap:8px;align-items:center}
+.sq{position:relative;overflow:hidden;width:40px;height:40px;display:grid;place-items:center;flex:none;border:1.5px solid var(--line);background:transparent;color:var(--ink);font:600 12px var(--fm);text-decoration:none;cursor:pointer;transition:border-color .25s,color .25s,transform .45s var(--spring)}
+.sq:hover{border-color:var(--acc);color:var(--acc)}
+.srow .yr{margin-left:auto;font:11px var(--fm);color:var(--muted)}
+
+main{margin-left:var(--sw)}
+.wrap{max-width:980px;margin:0 auto;padding:0 44px}
+
+/* ---------- buttons ---------- */
+.btn{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);text-decoration:none;font:600 13px var(--fm);letter-spacing:.04em;text-transform:uppercase;cursor:pointer;transition:color .3s,border-color .3s,transform .45s var(--spring)}
+.btn::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--ink);transform:translateY(101%);transition:transform .35s var(--ease)}
 .btn:hover{color:var(--bg)}
-.btn:hover::before{transform:translateY(0)}
-.btn:active{transform:scale(.96)}
-.btn .ar{display:inline-block;transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+.btn:hover::before{transform:none}
+.btn .ar{display:inline-block;transition:transform .3s var(--ease)}
 .btn:hover .ar{transform:translateX(4px)}
-.btn.solid{background:var(--acc);border-color:var(--acc);color:var(--on)}
+.btn.solid{background:var(--acc);border-color:var(--acc);color:#fff}
 .btn.solid:hover{border-color:var(--ink);color:var(--bg)}
-.btn.sm{padding:8px 15px;font-size:14px}
-header{padding:88px 0 72px}
-.hero{display:flex;gap:56px;align-items:flex-end;justify-content:space-between}
+.btn.sm{padding:9px 14px;font-size:12px}
+
+.pressed{transform:scale(.96)!important;transition-duration:.08s!important}
+.row.pressed{transform:scale(.985)!important}
+.rip{position:absolute;border-radius:50%;background:currentColor;opacity:.28;transform:scale(0);pointer-events:none;animation:rip .6s var(--ease) forwards;z-index:2}
+@keyframes rip{to{transform:scale(1);opacity:0}}
+
+/* ---------- hero ---------- */
+header.hero{position:relative;padding:104px 0 88px}
+.sheet{position:absolute;top:30px;left:44px;font:11px var(--fm);letter-spacing:.16em;color:var(--muted)}
+.hgrid{display:flex;justify-content:space-between;align-items:flex-end;gap:52px}
 .intro{max-width:640px}
-.eyebrow{margin:0 0 22px;color:var(--muted);font-size:13px;letter-spacing:.12em;text-transform:uppercase}
-h1{margin:0 0 28px;font-weight:700;font-size:clamp(52px,10vw,118px);line-height:.94;letter-spacing:-.035em}
-.lead{margin:0 0 34px;font-size:19px;color:var(--muted);max-width:560px}
+.eyebrow{display:flex;align-items:center;gap:10px;margin:0 0 24px;font:400 12px var(--fm);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.eyebrow::before{content:"";width:10px;height:10px;flex:none;background:var(--acc)}
+h1{margin:0 0 30px;font:900 clamp(56px,9vw,128px)/.88 var(--fh);letter-spacing:-.045em;text-transform:uppercase}
+h1 .o{color:transparent;-webkit-text-stroke:2px var(--ink)}
+.lead{margin:0 0 36px;max-width:560px;font-size:19px;color:var(--muted)}
 .actions{display:flex;flex-wrap:wrap;gap:12px}
-.ph{margin:0;width:240px;flex:none}
+.ph{position:relative;margin:0;width:230px;flex:none;padding:10px;border:1.5px solid var(--line);background:var(--bg)}
 .ph img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;background:var(--panel)}
-.rise{opacity:0;transform:translateY(16px);animation:rise .8s cubic-bezier(.2,.7,.2,1) forwards}
-.d1{animation-delay:.08s}.d2{animation-delay:.18s}.d3{animation-delay:.3s}.d4{animation-delay:.42s}
+.ph figcaption{margin-top:8px;font:10px var(--fm);letter-spacing:.14em;color:var(--muted)}
+
+.rise{opacity:0;transform:translateY(18px)}
+.go .rise{animation:rise .85s var(--ease) forwards}
+.d1{animation-delay:.05s!important}.d2{animation-delay:.15s!important}.d3{animation-delay:.27s!important}.d4{animation-delay:.39s!important}.d5{animation-delay:.5s!important}
 @keyframes rise{to{opacity:1;transform:none}}
-@media (prefers-reduced-motion:reduce){.rise{animation:none;opacity:1;transform:none}*{transition-duration:.01ms!important}}
-.sec{display:grid;grid-template-columns:190px 1fr;gap:40px;padding:68px 0;border-top:1px solid var(--line)}
-.lab{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-top:8px}
+.swap{animation:swap .4s var(--ease)}
+@keyframes swap{from{opacity:.15;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+.card{position:relative}
+.card::before,.card::after{content:"";position:absolute;width:12px;height:12px;pointer-events:none;z-index:3}
+.card::before{top:-1.5px;left:-1.5px;border-top:2px solid var(--acc);border-left:2px solid var(--acc)}
+.card::after{bottom:-1.5px;right:-1.5px;border-bottom:2px solid var(--acc);border-right:2px solid var(--acc)}
+
+/* ---------- sections ---------- */
+.sec{padding:88px 0;border-top:1px solid var(--line)}
+.lab{display:flex;align-items:center;gap:14px;margin-bottom:18px;font:600 12px var(--fm);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
 .lab b{color:var(--acc);font-weight:600}
-h2{margin:0 0 30px;font-size:clamp(28px,4vw,40px);line-height:1.1;letter-spacing:-.02em}
-.row{display:grid;grid-template-columns:52px 1fr 230px;gap:20px;padding:30px 0;border-top:1px solid var(--line);transition:background .3s,padding .3s}
+.lab::after{content:"";flex:1;height:1px;background:var(--line)}
+h2{margin:0 0 34px;font:800 clamp(34px,5vw,56px)/1.05 var(--fh);letter-spacing:-.035em}
+.sub{margin:-18px 0 30px;color:var(--muted)}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease);transition-delay:calc(var(--i,0) * 70ms)}
+.rv.in{opacity:1;transform:none}
+
+.row{position:relative;overflow:hidden;display:grid;grid-template-columns:56px 1fr 240px;gap:20px;padding:30px 16px 30px 0;border-top:1px solid var(--line);transition:background-color .3s,padding .35s var(--ease),opacity .7s var(--ease),transform .45s var(--spring)}
 .row:last-child{border-bottom:1px solid var(--line)}
-.row:hover{background:var(--panel);padding-left:16px;padding-right:16px}
-.row .n{color:var(--acc);font-size:14px;padding-top:6px}
-.row h3{margin:0 0 6px;font-size:23px;line-height:1.2}
-.row p{margin:0 0 10px;color:var(--muted);font-size:15px}
-.tags{color:var(--muted);font-size:13px}
-.stat{font-size:14px;margin-bottom:14px}
-.stat b{color:var(--acc)}
-.links{display:flex;flex-wrap:wrap;gap:10px}
-.soon{display:inline-block;padding:6px 12px;border:1.5px dashed var(--line);color:var(--muted);font-size:13px}
-.sub{color:var(--muted);margin:-14px 0 28px}
-.demos{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line)}
-.demo{padding:28px}
-.demo+.demo{border-left:1px solid var(--line)}
-.demo h3{margin:6px 0 8px;font-size:24px}
-.demo p{margin:0 0 16px;color:var(--muted);font-size:15px}
-.num{color:var(--acc);font-size:12px;letter-spacing:.08em}
-input[type=number]{width:100%;padding:9px 11px;border:1.5px solid var(--line);border-radius:0;background:var(--bg);color:var(--ink);font-size:14px;transition:border-color .25s}
-input[type=number]:hover,input[type=number]:focus{border-color:var(--acc)}
-input[type=file]{margin:4px 0 10px;font-size:13px;max-width:100%;color:var(--muted)}
-input[type=file]::file-selector-button{padding:8px 16px;margin-right:12px;border:0;background:var(--acc);color:var(--on);font-weight:600;cursor:pointer;transition:background .25s,color .25s,transform .15s}
-input[type=file]::file-selector-button:hover{background:var(--ink);color:var(--bg)}
-input[type=file]::file-selector-button:active{transform:scale(.96)}
-.chk{font-size:13px;color:var(--muted);display:block;margin-bottom:12px;cursor:pointer}
-#fprev{width:112px;height:112px;image-rendering:pixelated;border:1px solid var(--line);background:#000;margin-bottom:12px}
-.out{font-size:15px;min-height:26px}
-.bar{display:flex;align-items:center;gap:8px;margin:5px 0;font-size:14px}
-.bar i{display:block;height:8px;background:var(--acc);transition:width .4s}
-.bar span:first-child{width:96px}
-.form{display:grid;grid-template-columns:1fr 1fr;gap:10px 14px;margin-bottom:16px}
-.form label{font-size:12px;color:var(--muted)}
-.price{font-family:Georgia,serif;font-size:36px;font-weight:700;color:var(--acc)}
-.about{max-width:640px;font-size:18px;margin:0 0 26px}
-.skills{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px 22px;color:var(--muted)}
-.skills li::before{content:"/ ";color:var(--acc)}
-.mail{position:relative;display:inline-block;font-size:clamp(22px,4vw,38px);color:var(--ink);text-decoration:none;margin-bottom:26px;word-break:break-all}
-.mail::after{content:"";position:absolute;left:0;bottom:-2px;height:3px;width:100%;background:var(--acc);transform:scaleX(.18);transform-origin:left;transition:transform .4s cubic-bezier(.2,.7,.2,1)}
-.mail:hover::after{transform:scaleX(1)}
-footer{padding:30px 0 40px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+.row::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--acc);transform:scaleY(0);transform-origin:top;transition:transform .35s var(--ease)}
+.row:hover{background:var(--panel);padding-left:18px}
+.row:hover::before{transform:none}
+.row .n{padding-top:6px;font:600 13px var(--fm);color:var(--acc)}
+.row h3{margin:0 0 6px;font:700 24px/1.2 var(--fh);letter-spacing:-.015em}
+.row p{margin:0 0 12px;font-size:15px;color:var(--muted)}
+.tags{font:12px var(--fm);color:var(--muted);letter-spacing:.03em}
+.stat{margin-bottom:14px;font:13px/1.6 var(--fm)}
+.stat b{color:var(--acc);font-weight:600}
+.links{display:flex;flex-wrap:wrap;gap:8px}
+.soon{display:inline-block;padding:6px 12px;border:1.5px dashed var(--muted);color:var(--muted);font:12px var(--fm);letter-spacing:.06em}
+
+.demos{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.demo{padding:28px;border:1.5px solid var(--line);background:var(--bg)}
+.demo h3{margin:8px 0 8px;font:700 24px/1.2 var(--fh);letter-spacing:-.015em}
+.demo p{margin:0 0 18px;font-size:15px;color:var(--muted)}
+.num{font:600 11px var(--fm);letter-spacing:.14em;color:var(--acc)}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:10px 14px;margin-bottom:18px}
+.form label{display:block;margin-bottom:3px;font:11px var(--fm);color:var(--muted)}
+input[type=number]{width:100%;padding:10px 11px;border:1.5px solid var(--line);border-radius:0;background:var(--bg);color:var(--ink);font:14px var(--fm);transition:border-color .25s,transform .45s var(--spring)}
+input[type=number]:hover,input[type=number]:focus{border-color:var(--acc);outline:none}
+.fpick{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:4px 0 12px}
+.fpick input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.fname{font:12px var(--fm);color:var(--muted);word-break:break-all}
+.chk{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:8px;margin-bottom:14px;padding:4px 6px 4px 0;font:12px var(--fm);color:var(--muted);cursor:pointer;transition:transform .45s var(--spring)}
+.chk input{accent-color:var(--acc);width:16px;height:16px;margin:0}
+#fprev{display:block;width:112px;height:112px;margin-bottom:14px;border:1.5px solid var(--line);background:#000;image-rendering:pixelated}
+.out{min-height:26px;font:14px var(--fm)}
+.bar{display:flex;align-items:center;gap:8px;margin:6px 0;font:13px var(--fm)}
+.bar i{display:block;height:8px;background:var(--acc);transition:width .5s var(--ease)}
+.bar span:first-child{width:130px}
+.price{font:800 40px var(--fh);letter-spacing:-.02em;color:var(--acc)}
+
+.about{max-width:640px;margin:0 0 34px;font-size:18px}
+.skg{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.skc{padding:22px;border:1.5px solid var(--line);background:var(--bg)}
+.skc h4{margin:0 0 14px;font:600 11px var(--fm);letter-spacing:.16em;text-transform:uppercase;color:var(--acc)}
+.skc ul{margin:0;padding:0;list-style:none;font:14px/2 var(--fm)}
+.skc li::before{content:"/ ";color:var(--acc)}
+
+.cgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.ccard{position:relative;overflow:hidden;display:flex;flex-direction:column;gap:10px;min-height:168px;padding:24px 22px;border:1.5px solid var(--ink);background:var(--bg);color:var(--ink);text-decoration:none;transition:transform .45s var(--spring),box-shadow .35s var(--ease),opacity .7s var(--ease)}
+.ccard .k{font:600 11px var(--fm);letter-spacing:.16em;color:var(--muted)}
+.ccard .v{font:700 clamp(17px,1.8vw,21px)/1.25 var(--fh);word-break:break-all}
+.ccard .ar{margin-top:auto;font:600 12px var(--fm);letter-spacing:.06em;color:var(--acc);transition:transform .3s var(--ease)}
+.ccard:hover{transform:translate(-4px,-4px);box-shadow:6px 6px 0 var(--acc)}
+.ccard:hover .ar{transform:translateX(5px)}
+
+footer{padding:30px 0 44px;border-top:1px solid var(--line);font:12px var(--fm);color:var(--muted)}
 footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
-footer a{color:var(--muted);text-decoration:none;margin-left:18px;transition:color .25s}
+footer a{position:relative;overflow:hidden;display:inline-block;margin-left:18px;color:var(--muted);text-decoration:none;transition:color .25s,transform .45s var(--spring)}
 footer a:hover{color:var(--acc)}
-@media (max-width:820px){
-.hero{flex-direction:column;align-items:flex-start;gap:32px}.ph{width:180px}
-.sec{grid-template-columns:1fr;gap:6px;padding:52px 0}
-.row{grid-template-columns:36px 1fr}.row .side{grid-column:2}
-.demos{grid-template-columns:1fr}.demo+.demo{border-left:0;border-top:1px solid var(--line)}
-header{padding:56px 0 48px}}
+
+/* ---------- tablet: icon rail ---------- */
+@media (max-width:900px){
+:root{--sw:76px}
+.side{padding:18px 10px;align-items:center}
+.brand{margin:0 0 34px}
+.brand .bt,.ni .lb,.ni .ix,.srow .yr{display:none}
+.navl{width:100%}
+.ni{justify-content:center;padding:13px}
+.sfoot{padding:0;align-items:center}
+.lgs{flex-direction:column;width:44px}
+.srow{flex-direction:column}
+.wrap{padding:0 30px}
+.lamp{position:absolute;right:18px}
+.hgrid{flex-direction:column;align-items:flex-start;gap:36px}
+.sheet{left:30px}
+.row{grid-template-columns:40px 1fr}
+.row .side-r{grid-column:2}
+.demos,.skg{grid-template-columns:1fr}
+}
+/* ---------- phone: floating bottom pill ---------- */
+@media (max-width:600px){
+.side{top:auto;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));width:auto;flex-direction:row;align-items:stretch;padding:5px;border:1.5px solid var(--ink);box-shadow:4px 4px 0 var(--ink)}
+.brand,.srow{display:none}
+.navl{flex-direction:row;flex:1;gap:2px}
+.navl li{flex:1;display:flex}
+.ni{flex:1;flex-direction:column;justify-content:center;gap:3px;min-height:50px;padding:6px 2px;font-size:9.5px;letter-spacing:.01em}
+.ni .lb{display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#ind{box-shadow:none}
+.sfoot{flex-direction:row;margin:0 0 0 4px}
+.lgs{width:44px;height:100%;border:0;border-left:1.5px solid var(--line)}
+.lg{display:none}
+.lg.on{display:block;background:transparent;color:var(--ink)}
+main{margin-left:0;padding-bottom:92px}
+.wrap{padding:0 20px}
+.lamp{right:10px}
+.lamp .cl{height:calc(40px + var(--pull))}
+header.hero{padding:118px 0 56px}
+.sheet{top:24px;left:20px;font-size:10px;max-width:60%}
+h1 .o{-webkit-text-stroke:1.5px var(--ink)}
+.lead{font-size:17px}
+.ph{width:170px}
+.sec{padding:60px 0}
+.row{grid-template-columns:30px 1fr;gap:12px;padding:24px 10px 24px 0}
+.row:hover{padding-left:12px}
+.demo{padding:22px 18px}
+.cgrid{grid-template-columns:1fr}
+.ccard{min-height:130px}
+footer a{margin:0 18px 0 0}
+}
+
+/* ---------- low-power mode (auto-detected) ---------- */
+html.lite body,html.lite .side{background-image:none}
+html.lite .rip{display:none}
+html.lite #ind{transition:transform .25s ease,width .25s,height .25s;box-shadow:none}
+html.lite #ind.lift,html.lite .ni.lift,html.lite .lamp:hover .sw,html.lite .swap{animation:none}
+html.lite .rv{transform:none;transition:opacity .35s ease}
+html.lite .go .rise{animation-duration:.35s}
+html.lite .rise{transform:none}
+html.lite .ccard:hover{transform:none;box-shadow:none;border-color:var(--acc)}
+@media (prefers-reduced-motion:reduce){
+*,*::before,*::after{animation:none!important;transition:none!important}
+.rise,.rv{opacity:1!important;transform:none!important}
+}
 </style>
 </head>
 <body>
-<nav><div class="wrap">
-<a class="logo" href="#top"><span class="mark">KL</span>Kamol Latipov</a>
-<ul><li><a href="#work">Work</a></li><li><a href="#demos">Demos</a></li><li><a href="#about">About</a></li><li><a href="#contact">Contact</a></li></ul>
-</div></nav>
 
-<header id="top"><div class="wrap hero">
+<div id="ld" aria-hidden="true"><div class="box">
+<svg viewBox="0 0 72 72"><rect x="3" y="3" width="66" height="66"/><text x="36" y="44" text-anchor="middle">KL</text></svg>
+<small data-i="loading">SHEET 01 / LOADING</small>
+</div></div>
+
+<button class="lamp" id="lamp" type="button" data-ia="lampAria" aria-label="Pull to switch light or dark theme">
+<span class="mount"></span>
+<span class="sw"><span class="cl"></span><span class="bead"></span><span class="pl" data-i="pull">PULL</span></span>
+</button>
+
+<aside class="side" aria-label="Main navigation">
+<a class="brand" href="#top"><span class="mark">KL</span><span class="bt">Kamol Latipov<small>ML · Full-stack</small></span></a>
+<ul class="navl" id="navl">
+<span id="ind" aria-hidden="true"></span>
+<li><a class="ni on" href="#top" data-s="top" data-ia="nav.home"><svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V21h-6v-6H9v6H3z"/></svg><span class="lb" data-i="nav.home">Home</span><span class="ix">00</span></a></li>
+<li><a class="ni" href="#work" data-s="work" data-ia="nav.work"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg><span class="lb" data-i="nav.work">Work</span><span class="ix">01</span></a></li>
+<li><a class="ni" href="#demos" data-s="demos" data-ia="nav.demos"><svg viewBox="0 0 24 24"><path d="M9 3v6L4 19a1.5 1.5 0 0 0 1.3 2h13.4A1.5 1.5 0 0 0 20 19l-5-10V3M8 3h8M7 15h10"/></svg><span class="lb" data-i="nav.demos">Demos</span><span class="ix">02</span></a></li>
+<li><a class="ni" href="#about" data-s="about" data-ia="nav.about"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg><span class="lb" data-i="nav.about">About</span><span class="ix">03</span></a></li>
+<li><a class="ni" href="#contact" data-s="contact" data-ia="nav.contact"><svg viewBox="0 0 24 24"><path d="M21 3 3 10.5l7 2.5 2.5 7z"/><path d="m10 13 4.5-4.5"/></svg><span class="lb" data-i="nav.contact">Contact</span><span class="ix">04</span></a></li>
+</ul>
+<div class="sfoot">
+<div class="lgs" role="group" aria-label="Language">
+<button class="lg" type="button" data-l="uz">UZ</button><button class="lg" type="button" data-l="ru">RU</button><button class="lg" type="button" data-l="en">EN</button>
+</div>
+<div class="srow">
+<a class="sq" href="https://github.com/Latipov-Kamol" target="_blank" rel="noopener" title="GitHub">GH</a>
+<a class="sq" href="https://t.me/k_learner" target="_blank" rel="noopener" title="Telegram">TG</a>
+<span class="yr">© 2026</span>
+</div>
+</div>
+</aside>
+
+<main>
+<header class="hero" id="top"><div class="wrap">
+<div class="sheet rise d1" data-i="sheet">SCALE 1:1 · SHEET 01/04 · 2026</div>
+<div class="hgrid">
 <div class="intro">
-<p class="eyebrow mono rise d1">Portfolio · 2026</p>
-<h1 class="serif rise d2">Kamol<br>Latipov</h1>
-<p class="lead rise d3">My background is mathematics education. I use it to build machine learning projects and publish them, so anyone can open a link and test the models themselves.</p>
+<p class="eyebrow rise d1" data-i="eyebrow">Portfolio · Machine learning &amp; full-stack</p>
+<h1 class="rise d2">Kamol<br><span class="o">Latipov</span></h1>
+<p class="lead rise d3" data-i="lead">My background is mathematics education. I use it to build machine learning projects and full web applications, and I publish them so anyone can open a link and test the models themselves.</p>
 <div class="actions rise d4">
-<a class="btn solid" href="#work"><span>See the work</span><span class="ar">↓</span></a>
-<a class="btn" href="#contact"><span>Get in touch</span><span class="ar">→</span></a>
+<a class="btn solid" href="#work"><span data-i="btn.work">See the work</span><span class="ar">↓</span></a>
+<a class="btn" href="#contact"><span data-i="btn.contact">Get in touch</span><span class="ar">→</span></a>
 </div>
 </div>
-<figure class="ph rise d4"><img src="photo.jpg" alt="Kamol Latipov" onerror="this.parentNode.style.display='none'"></figure>
+<figure class="ph card rise d5"><img src="photo.jpg" alt="Kamol Latipov" onerror="this.parentNode.style.display='none'"><figcaption data-i="fig">FIG. 01 — K. LATIPOV</figcaption></figure>
+</div>
 </div></header>
 
-<section class="sec wrap" id="work">
-<div class="lab mono"><b>01</b> — Work</div>
-<div><h2 class="serif">Selected projects</h2>
-<div id="plist"><p class="sub">Loading projects…</p></div></div>
-</section>
+<section class="sec" id="work"><div class="wrap">
+<div class="lab rv"><b>01</b> / <span data-i="nav.work">Work</span></div>
+<h2 class="rv" data-i="h.work">Selected projects</h2>
+<div id="plist"><p class="sub" data-i="loadingProjects">Loading projects…</p></div>
+</div></section>
 
-<section class="sec wrap" id="demos">
-<div class="lab mono"><b>02</b> — Demos</div>
-<div><h2 class="serif">Try the models</h2>
-<p class="sub">Both models run in your browser. Nothing is uploaded anywhere.</p>
+<section class="sec" id="demos"><div class="wrap">
+<div class="lab rv"><b>02</b> / <span data-i="nav.demos">Demos</span></div>
+<h2 class="rv" data-i="h.demos">Try the models</h2>
+<p class="sub rv" data-i="sub.demos">Both models run in your browser. Nothing is uploaded anywhere.</p>
 <div class="demos">
-<div class="demo" id="demo-housing">
-<span class="num mono">DEMO · PROJECT 01</span>
-<h3 class="serif">Estimate a house price</h3>
-<p>Enter the features of a California district and the Random Forest predicts the median house value. Trained on 1990 US census data for California only, so it is meaningful for California districts, not other regions.</p>
+<div class="demo card rv" id="demo-housing">
+<span class="num" data-i="d1.num">DEMO · PROJECT 01</span>
+<h3 data-i="d1.h">Estimate a house price</h3>
+<p data-i="d1.p">Enter the features of a California district and the Random Forest predicts the median house value. Trained on 1990 US census data for California only, so it is meaningful for California districts, not other regions.</p>
 <div class="form" id="hform"></div>
-<a class="btn solid" href="#demo-housing" id="hbtn"><span>Predict</span><span class="ar">→</span></a>
-<div id="hout" class="out" style="margin-top:14px"></div>
+<a class="btn solid" href="#demo-housing" id="hbtn"><span data-i="predict">Predict</span><span class="ar">→</span></a>
+<div id="hout" class="out" style="margin-top:16px"></div>
 </div>
-<div class="demo" id="demo-fashion">
-<span class="num mono">DEMO · PROJECT 02</span>
-<h3 class="serif">Recognize clothing</h3>
-<p>Upload a photo of one clothing item (shirt, shoe, bag…) on a plain background.</p>
-<input type="file" id="fimg" accept="image/*">
-<label class="chk"><input type="checkbox" id="finv" checked> auto-invert light backgrounds</label>
+<div class="demo card rv" id="demo-fashion" style="--i:1">
+<span class="num" data-i="d2.num">DEMO · PROJECT 02</span>
+<h3 data-i="d2.h">Recognize clothing</h3>
+<p data-i="d2.p">Upload a photo of one clothing item (shirt, shoe, bag…) on a plain background.</p>
+<div class="fpick">
+<label class="btn solid sm" tabindex="0"><input type="file" id="fimg" accept="image/*"><span data-i="choose">Choose photo</span><span class="ar">↑</span></label>
+<span class="fname" id="fname" data-i="nofile">No file chosen</span>
+</div>
+<label class="chk"><input type="checkbox" id="finv" checked> <span data-i="invert">auto-invert light backgrounds</span></label>
 <canvas id="fprev" width="28" height="28"></canvas>
-<div id="fout" class="out">Waiting for an image…</div>
+<div id="fout" class="out"><span data-i="waiting">Waiting for an image…</span></div>
 </div>
-</div></div>
-</section>
+</div>
+</div></section>
 
-<section class="sec wrap" id="about">
-<div class="lab mono"><b>03</b> — About</div>
-<div><h2 class="serif">Numbers first</h2>
-<p class="about">I create worksheets and tests in mathematics education. That work gave me a feel for numbers and logic, and now I apply it to regression, image classification and text analysis. Each project covers the full path: data, model, evaluation and a public write-up.</p>
-<ul class="skills mono"><li>Python</li><li>PyTorch</li><li>scikit-learn</li><li>pandas</li><li>NumPy</li><li>Matplotlib</li><li>Google Colab</li><li>Git &amp; GitHub</li></ul></div>
-</section>
+<section class="sec" id="about"><div class="wrap">
+<div class="lab rv"><b>03</b> / <span data-i="nav.about">About</span></div>
+<h2 class="rv" data-i="h.about">Numbers first</h2>
+<p class="about rv" data-i="about">I create worksheets and tests in mathematics education. That work gave me a feel for numbers and logic, and now I apply it to regression, image classification and text analysis, and to building the web apps around them. Each project covers the full path: data, model, evaluation, interface and a public write-up.</p>
+<div class="skg">
+<div class="skc rv"><h4 data-i="sk.ml">Machine Learning</h4><ul><li>Python</li><li>PyTorch</li><li>scikit-learn</li><li>pandas</li><li>NumPy</li><li>Matplotlib</li><li>Google Colab</li></ul></div>
+<div class="skc rv" style="--i:1"><h4>Frontend</h4><ul><li>HTML5</li><li>CSS3</li><li>JavaScript (ES6+)</li><li>TypeScript</li><li>React</li><li data-i="sk.resp">Responsive design</li></ul></div>
+<div class="skc rv" style="--i:2"><h4 data-i="sk.be">Backend &amp; Tools</h4><ul><li>Node.js</li><li>Express</li><li>FastAPI</li><li>REST APIs</li><li>PostgreSQL</li><li>Docker</li><li>Git &amp; GitHub</li></ul></div>
+</div>
+</div></section>
 
-<section class="sec wrap" id="contact">
-<div class="lab mono"><b>04</b> — Contact</div>
-<div><h2 class="serif">Write to me</h2>
-<a class="mail serif" href="mailto:j01097127@gmail.com">j01097127@gmail.com</a><br>
-<a class="btn" href="https://github.com/Latipov-Kamol"><span>GitHub</span><span class="ar">↗</span></a></div>
-</section>
+<section class="sec" id="contact"><div class="wrap">
+<div class="lab rv"><b>04</b> / <span data-i="nav.contact">Contact</span></div>
+<h2 class="rv" data-i="h.contact">Write to me</h2>
+<div class="cgrid">
+<a class="ccard card rv" href="mailto:j01097127@gmail.com"><span class="k" data-i="c.email">EMAIL</span><span class="v">j01097127@gmail.com</span><span class="ar" data-i="c.emailAr">SEND A MESSAGE →</span></a>
+<a class="ccard card rv" style="--i:1" href="https://t.me/k_learner" target="_blank" rel="noopener"><span class="k">TELEGRAM</span><span class="v">@k_learner</span><span class="ar" data-i="c.tgAr">OPEN CHAT ↗</span></a>
+<a class="ccard card rv" style="--i:2" href="https://github.com/Latipov-Kamol" target="_blank" rel="noopener"><span class="k">GITHUB</span><span class="v">Latipov-Kamol</span><span class="ar" data-i="c.ghAr">VIEW CODE ↗</span></a>
+</div>
+</div></section>
 
-<footer><div class="wrap"><span>© 2026 Kamol Latipov</span><span><a href="https://github.com/Latipov-Kamol">GitHub</a><a href="mailto:j01097127@gmail.com">Email</a></span></div></footer>
+<footer><div class="wrap"><span>© 2026 Kamol Latipov</span><span><a href="https://github.com/Latipov-Kamol" target="_blank" rel="noopener">GitHub</a><a href="https://t.me/k_learner" target="_blank" rel="noopener">Telegram</a><a href="mailto:j01097127@gmail.com" data-i="f.email">Email</a></span></div></footer>
+</main>
+
 <script>
 (function(){
-const $=id=>document.getElementById(id);
+const d=document.documentElement,$=id=>document.getElementById(id);
+const isLite=()=>d.classList.contains('lite');
+
+/* =================== translations =================== */
+const I={
+en:{
+title:'Kamol Latipov — Portfolio',desc:'Kamol Latipov — machine learning and full-stack projects with live in-browser demos.',
+loading:'SHEET 01 / LOADING',pull:'PULL',lampAria:'Pull to switch light or dark theme',
+'nav.home':'Home','nav.work':'Work','nav.demos':'Demos','nav.about':'About','nav.contact':'Contact',
+sheet:'SCALE 1:1 · SHEET 01/04 · 2026',eyebrow:'Portfolio · Machine learning & full-stack',
+lead:'My background is mathematics education. I use it to build machine learning projects and full web applications, and I publish them so anyone can open a link and test the models themselves.',
+'btn.work':'See the work','btn.contact':'Get in touch',fig:'FIG. 01 — K. LATIPOV',
+'h.work':'Selected projects',loadingProjects:'Loading projects…',tryLive:'Try it live',code:'Code',soon:'IN PROGRESS',
+'h.demos':'Try the models','sub.demos':'Both models run in your browser. Nothing is uploaded anywhere.',
+'d1.num':'DEMO · PROJECT 01','d1.h':'Estimate a house price',
+'d1.p':'Enter the features of a California district and the Random Forest predicts the median house value. Trained on 1990 US census data for California only, so it is meaningful for California districts, not other regions.',
+'f.MedInc':'Median income (×$10k)','f.HouseAge':'House age (years)','f.AveRooms':'Avg rooms','f.AveBedrms':'Avg bedrooms','f.Population':'Population','f.AveOccup':'Avg occupants','f.Latitude':'Latitude','f.Longitude':'Longitude',
+predict:'Predict',loadingModel:'Loading model…',rfMissing:'Model file housing_rf.json was not found in the repository.',
+'d2.num':'DEMO · PROJECT 02','d2.h':'Recognize clothing','d2.p':'Upload a photo of one clothing item (shirt, shoe, bag…) on a plain background.',
+choose:'Choose photo',nofile:'No file chosen',invert:'auto-invert light backgrounds',waiting:'Waiting for an image…',cnnMissing:'Model file fashion_cnn.json was not found in the repository.',
+cls:['T-shirt/top','Trouser','Pullover','Dress','Coat','Sandal','Shirt','Sneaker','Bag','Ankle boot'],
+'h.about':'Numbers first',
+about:'I create worksheets and tests in mathematics education. That work gave me a feel for numbers and logic, and now I apply it to regression, image classification and text analysis, and to building the web apps around them. Each project covers the full path: data, model, evaluation, interface and a public write-up.',
+'sk.ml':'Machine Learning','sk.be':'Backend & Tools','sk.resp':'Responsive design',
+'h.contact':'Write to me','c.email':'EMAIL','c.emailAr':'SEND A MESSAGE →','c.tgAr':'OPEN CHAT ↗','c.ghAr':'VIEW CODE ↗','f.email':'Email'
+},
+ru:{
+title:'Камол Латипов — Портфолио',desc:'Камол Латипов — проекты машинного обучения и full-stack с живыми демо в браузере.',
+loading:'ЛИСТ 01 / ЗАГРУЗКА',pull:'ПОТЯНИ',lampAria:'Потяните, чтобы переключить светлую или тёмную тему',
+'nav.home':'Главная','nav.work':'Работы','nav.demos':'Демо','nav.about':'Обо мне','nav.contact':'Контакты',
+sheet:'МАСШТАБ 1:1 · ЛИСТ 01/04 · 2026',eyebrow:'Портфолио · Машинное обучение и full-stack',
+lead:'По образованию я связан с преподаванием математики. Этот опыт помогает мне создавать проекты машинного обучения и полноценные веб-приложения. Я публикую их, чтобы любой мог открыть ссылку и сам проверить модели.',
+'btn.work':'Смотреть работы','btn.contact':'Связаться',fig:'РИС. 01 — К. ЛАТИПОВ',
+'h.work':'Избранные проекты',loadingProjects:'Загрузка проектов…',tryLive:'Попробовать',code:'Код',soon:'В РАБОТЕ',
+'h.demos':'Попробуйте модели','sub.demos':'Обе модели работают прямо в браузере. Ничего никуда не загружается.',
+'d1.num':'ДЕМО · ПРОЕКТ 01','d1.h':'Оцените стоимость дома',
+'d1.p':'Введите характеристики района Калифорнии, и Random Forest предскажет медианную стоимость дома. Модель обучена на данных переписи США 1990 года только по Калифорнии, поэтому имеет смысл для районов Калифорнии, а не других регионов.',
+'f.MedInc':'Медианный доход (×$10k)','f.HouseAge':'Возраст домов (лет)','f.AveRooms':'Ср. число комнат','f.AveBedrms':'Ср. число спален','f.Population':'Население','f.AveOccup':'Ср. число жильцов','f.Latitude':'Широта','f.Longitude':'Долгота',
+predict:'Рассчитать',loadingModel:'Загрузка модели…',rfMissing:'Файл модели housing_rf.json не найден в репозитории.',
+'d2.num':'ДЕМО · ПРОЕКТ 02','d2.h':'Распознайте одежду','d2.p':'Загрузите фото одной вещи (рубашка, обувь, сумка…) на однотонном фоне.',
+choose:'Выбрать фото',nofile:'Файл не выбран',invert:'авто-инверсия светлого фона',waiting:'Ждём изображение…',cnnMissing:'Файл модели fashion_cnn.json не найден в репозитории.',
+cls:['Футболка/топ','Брюки','Пуловер','Платье','Пальто','Сандалии','Рубашка','Кроссовки','Сумка','Ботильоны'],
+'h.about':'Сначала цифры',
+about:'Я составляю рабочие листы и тесты по математике. Эта работа дала мне чувство чисел и логики, и теперь я применяю его в регрессии, классификации изображений и анализе текста, а также при создании веб-приложений вокруг них. Каждый проект проходит весь путь: данные, модель, оценка, интерфейс и публичное описание.',
+'sk.ml':'Машинное обучение','sk.be':'Бэкенд и инструменты','sk.resp':'Адаптивная вёрстка',
+'h.contact':'Напишите мне','c.email':'ПОЧТА','c.emailAr':'НАПИСАТЬ →','c.tgAr':'ОТКРЫТЬ ЧАТ ↗','c.ghAr':'СМОТРЕТЬ КОД ↗','f.email':'Почта'
+},
+uz:{
+title:'Kamol Latipov — Portfolio',desc:'Kamol Latipov — brauzerda ishlaydigan demolar bilan mashinali o‘qitish va full-stack loyihalari.',
+loading:'VARAQ 01 / YUKLANMOQDA',pull:'TORTING',lampAria:'Yorug‘ yoki qorong‘i mavzuga o‘tish uchun torting',
+'nav.home':'Asosiy','nav.work':'Ishlar','nav.demos':'Demo','nav.about':'Men haqimda','nav.contact':'Aloqa',
+sheet:'MASSHTAB 1:1 · VARAQ 01/04 · 2026',eyebrow:'Portfolio · Mashinali o‘qitish va full-stack',
+lead:'Mening asosiy sohamdagi tajribam — matematika ta’limi. Shu tajriba bilan mashinali o‘qitish loyihalari va to‘liq veb-ilovalar yarataman hamda ularni ochiq e’lon qilaman — istalgan odam havolani ochib, modellarni o‘zi sinab ko‘rishi mumkin.',
+'btn.work':'Ishlarni ko‘rish','btn.contact':'Bog‘lanish',fig:'RASM 01 — K. LATIPOV',
+'h.work':'Tanlangan loyihalar',loadingProjects:'Loyihalar yuklanmoqda…',tryLive:'Sinab ko‘rish',code:'Kod',soon:'JARAYONDA',
+'h.demos':'Modellarni sinab ko‘ring','sub.demos':'Ikkala model ham brauzeringizda ishlaydi. Hech narsa hech qayerga yuklanmaydi.',
+'d1.num':'DEMO · LOYIHA 01','d1.h':'Uy narxini baholang',
+'d1.p':'Kaliforniyadagi tuman ko‘rsatkichlarini kiriting, Random Forest esa uylarning o‘rtacha (mediana) narxini bashorat qiladi. Model faqat Kaliforniya bo‘yicha 1990-yilgi AQSh aholi ro‘yxati ma’lumotlarida o‘qitilgan, shuning uchun u boshqa hududlar uchun emas, faqat Kaliforniya tumanlari uchun ma’noli.',
+'f.MedInc':'O‘rtacha daromad (×$10k)','f.HouseAge':'Uylar yoshi (yil)','f.AveRooms':'O‘rtacha xonalar','f.AveBedrms':'O‘rtacha yotoqxonalar','f.Population':'Aholi soni','f.AveOccup':'O‘rtacha yashovchilar','f.Latitude':'Kenglik','f.Longitude':'Uzunlik',
+predict:'Hisoblash',loadingModel:'Model yuklanmoqda…',rfMissing:'housing_rf.json model fayli repozitoriyda topilmadi.',
+'d2.num':'DEMO · LOYIHA 02','d2.h':'Kiyimni aniqlang','d2.p':'Bir dona kiyim (ko‘ylak, poyabzal, sumka…) suratini bir xil rangli fonda yuklang.',
+choose:'Rasm tanlash',nofile:'Fayl tanlanmagan',invert:'yorug‘ fonni avtomatik invertlash',waiting:'Rasm kutilmoqda…',cnnMissing:'fashion_cnn.json model fayli repozitoriyda topilmadi.',
+cls:['Futbolka/top','Shim','Sviter','Ayollar ko‘ylagi','Palto','Sandal','Ko‘ylak','Krossovka','Sumka','Botinka'],
+'h.about':'Avval raqamlar',
+about:'Men matematika bo‘yicha ish varaqalari va testlar tuzaman. Bu ish menga raqamlar va mantiqni his qilishni o‘rgatdi, endi esa buni regressiya, tasvirlarni tasniflash va matn tahlilida, shuningdek ular atrofida veb-ilovalar yaratishda qo‘llayman. Har bir loyiha to‘liq yo‘lni bosib o‘tadi: ma’lumotlar, model, baholash, interfeys va ochiq tavsif.',
+'sk.ml':'Mashinali o‘qitish','sk.be':'Backend va vositalar','sk.resp':'Moslashuvchan dizayn',
+'h.contact':'Menga yozing','c.email':'POCHTA','c.emailAr':'XABAR YOZISH →','c.tgAr':'CHATNI OCHISH ↗','c.ghAr':'KODNI KO‘RISH ↗','f.email':'Pochta'
+}};
+let L=d.getAttribute('lang');if(!I[L])L='en';
+const t=k=>(I[L][k]!==undefined?I[L][k]:(I.en[k]!==undefined?I.en[k]:k));
+
+/* =================== demos (run fully in the browser) =================== */
 const load=u=>fetch(u).then(r=>{if(!r.ok)throw 0;return r.json()});
-const CLS=['T-shirt/top','Trouser','Pullover','Dress','Coat','Sandal','Shirt','Sneaker','Bag','Ankle boot'];
-let W=null,RF=null;
+let W=null,RF=null,lastProbs=null;
 function conv(x,C,H,Wd,w,b,O){const o=new Float32Array(O*H*Wd);for(let k=0;k<O;k++)for(let y=0;y<H;y++)for(let z=0;z<Wd;z++){let s=b[k];for(let c=0;c<C;c++)for(let i=0;i<3;i++){const yy=y+i-1;if(yy<0||yy>=H)continue;for(let j=0;j<3;j++){const xx=z+j-1;if(xx<0||xx>=Wd)continue;s+=x[c*H*Wd+yy*Wd+xx]*w[((k*C+c)*3+i)*3+j]}}o[k*H*Wd+y*Wd+z]=s>0?s:0}return o}
 function pool(x,C,H,Wd){const h=H/2,w2=Wd/2,o=new Float32Array(C*h*w2);for(let c=0;c<C;c++)for(let y=0;y<h;y++)for(let z=0;z<w2;z++){const p=c*H*Wd+2*y*Wd+2*z;o[c*h*w2+y*w2+z]=Math.max(x[p],x[p+1],x[p+Wd],x[p+Wd+1])}return o}
 function lin(x,w,b,O,relu){const n=x.length,o=new Float32Array(O);for(let i=0;i<O;i++){let s=b[i];for(let j=0;j<n;j++)s+=x[j]*w[i*n+j];o[i]=relu&&s<0?0:s}return o}
 function cnn(px){let a=conv(px,1,28,28,W['features.0.weight'],W['features.0.bias'],16);a=pool(a,16,28,28);a=conv(a,16,14,14,W['features.3.weight'],W['features.3.bias'],32);a=pool(a,32,14,14);a=lin(a,W['classifier.0.weight'],W['classifier.0.bias'],128,true);a=lin(a,W['classifier.2.weight'],W['classifier.2.bias'],10,false);const m=Math.max(...a),e=Array.from(a,v=>Math.exp(v-m)),s=e.reduce((p,q)=>p+q);return e.map(v=>v/s)}
+const msg=(el,key)=>{el.innerHTML='<span data-i="'+key+'">'+t(key)+'</span>'};
+function drawBars(){if(!lastProbs)return;const CLS=t('cls'),top=lastProbs.map((v,i)=>[v,i]).sort((a,b)=>b[0]-a[0]).slice(0,3);
+$('fout').innerHTML=top.map(x=>'<div class="bar"><span>'+CLS[x[1]]+'</span><i style="width:'+Math.round(x[0]*140)+'px"></i><span>'+(x[0]*100).toFixed(1)+'%</span></div>').join('')}
 
 $('fimg').onchange=async e=>{
-const f=e.target.files[0];if(!f)return;const out=$('fout');out.textContent='Loading model…';
-try{if(!W)W=await load('fashion_cnn.json')}catch(_){out.textContent='Model file fashion_cnn.json was not found in the repository.';return}
+const f=e.target.files[0];if(!f)return;const out=$('fout'),fn=$('fname');
+fn.removeAttribute('data-i');fn.textContent=f.name;
+msg(out,'loadingModel');
+try{if(!W)W=await load('fashion_cnn.json')}catch(_){msg(out,'cnnMissing');return}
 const img=new Image();img.onload=()=>{
 const c=$('fprev'),x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,28,28);
 const k=Math.min(28/img.width,28/img.height),w=img.width*k,h=img.height*k;x.drawImage(img,(28-w)/2,(28-h)/2,w,h);
-const d=x.getImageData(0,0,28,28),g=new Float32Array(784);
-for(let i=0;i<784;i++)g[i]=.299*d.data[i*4]+.587*d.data[i*4+1]+.114*d.data[i*4+2];
+const dt=x.getImageData(0,0,28,28),g=new Float32Array(784);
+for(let i=0;i<784;i++)g[i]=.299*dt.data[i*4]+.587*dt.data[i*4+1]+.114*dt.data[i*4+2];
 let edge=0;for(let i=0;i<28;i++)edge+=g[i]+g[27*28+i]+g[i*28]+g[i*28+27];
 const inv=$('finv').checked&&edge/112>128,px=new Float32Array(784);
-for(let i=0;i<784;i++){const v=inv?255-g[i]:g[i];px[i]=(v/255-.5)/.5;d.data[i*4]=d.data[i*4+1]=d.data[i*4+2]=v;d.data[i*4+3]=255}
-x.putImageData(d,0,0);
-const p=cnn(px),top=p.map((v,i)=>[v,i]).sort((a,b)=>b[0]-a[0]).slice(0,3);
-out.innerHTML=top.map(t=>'<div class="bar"><span>'+CLS[t[1]]+'</span><i style="width:'+Math.round(t[0]*140)+'px"></i><span>'+(t[0]*100).toFixed(1)+'%</span></div>').join('')};
+for(let i=0;i<784;i++){const v=inv?255-g[i]:g[i];px[i]=(v/255-.5)/.5;dt.data[i*4]=dt.data[i*4+1]=dt.data[i*4+2]=v;dt.data[i*4+3]=255}
+x.putImageData(dt,0,0);
+lastProbs=cnn(px);drawBars()};
 img.src=URL.createObjectURL(f)};
+document.querySelector('.fpick label').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();$('fimg').click()}});
 
-const FIELDS=[['MedInc','Median income (×$10k)',3.9],['HouseAge','House age (years)',29],['AveRooms','Avg rooms',5.4],['AveBedrms','Avg bedrooms',1.1],['Population','Population',1425],['AveOccup','Avg occupants',3],['Latitude','Latitude',34.2],['Longitude','Longitude',-118.5]];
-$('hform').innerHTML=FIELDS.map(f=>'<div><label>'+f[1]+'</label><input type="number" step="any" id="h_'+f[0]+'" value="'+f[2]+'"></div>').join('');
-$('hbtn').onclick=async e=>{e.preventDefault();const out=$('hout');out.textContent='Loading model…';
-try{if(!RF)RF=await load('housing_rf.json')}catch(_){out.textContent='Model file housing_rf.json was not found in the repository.';return}
+const FIELDS=[['MedInc',3.9],['HouseAge',29],['AveRooms',5.4],['AveBedrms',1.1],['Population',1425],['AveOccup',3],['Latitude',34.2],['Longitude',-118.5]];
+$('hform').innerHTML=FIELDS.map(f=>'<div><label for="h_'+f[0]+'" data-i="f.'+f[0]+'">'+t('f.'+f[0])+'</label><input type="number" step="any" id="h_'+f[0]+'" value="'+f[1]+'"></div>').join('');
+$('hbtn').onclick=async e=>{e.preventDefault();const out=$('hout');msg(out,'loadingModel');
+try{if(!RF)RF=await load('housing_rf.json')}catch(_){msg(out,'rfMissing');return}
 const v=FIELDS.map(f=>parseFloat($('h_'+f[0]).value));let sum=0;
-for(const t of RF.trees){let n=0;while(t.l[n]!==-1){n=v[t.f[n]]<=t.t[n]?t.l[n]:t.r[n]}sum+=t.v[n]}
+for(const tr of RF.trees){let n=0;while(tr.l[n]!==-1){n=v[tr.f[n]]<=tr.t[n]?tr.l[n]:tr.r[n]}sum+=tr.v[n]}
 out.innerHTML='<div class="price">$'+Math.round(sum/RF.trees.length*100000).toLocaleString('en-US')+'</div>'};
-})();
-</script>
-<script>
-(function(){
-const esc=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const box=document.getElementById('plist');
-fetch('projects.json').then(r=>r.json()).then(list=>{
-box.innerHTML=list.map((p,i)=>{
+
+/* =================== projects (projects.json) =================== */
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const box=$('plist');
+const FALLBACK=[{"kind":"TABULAR ML","title":"California Housing Price Prediction","text":"Predicts median house prices from census features. Compared Linear Regression with Random Forest after EDA and feature scaling.","stat":"Random Forest: R² **≈ 0.805** · RMSE **≈ 0.506**","tags":["Python","scikit-learn","pandas","seaborn"],"code":"https://github.com/Latipov-Kamol/California-Housing-Price-Prediction","demo":"#demo-housing","i18n":{"ru":{"kind":"ТАБЛИЧНОЕ ML","title":"Прогноз цен на жильё в Калифорнии","text":"Предсказывает медианные цены на жильё по данным переписи. Сравнил линейную регрессию со случайным лесом после EDA и масштабирования признаков."},"uz":{"kind":"JADVALLI ML","title":"Kaliforniyada uy narxlarini bashorat qilish","text":"Aholi ro‘yxati ma’lumotlari asosida uylarning o‘rtacha narxini bashorat qiladi. EDA va belgilarni masshtablashdan so‘ng chiziqli regressiya Random Forest bilan solishtirildi."}}},{"kind":"COMPUTER VISION","title":"Fashion-MNIST CNN Classifier","text":"Convolutional neural network in PyTorch that recognizes 10 types of clothing, including inference on custom uploaded images.","stat":"Test accuracy: **90.2%**","tags":["PyTorch","CNN","Torchvision"],"code":"https://github.com/Latipov-Kamol/Fashion-MNIST-CNN-Classifier","demo":"#demo-fashion","i18n":{"ru":{"kind":"КОМПЬЮТЕРНОЕ ЗРЕНИЕ","title":"Классификатор Fashion-MNIST на CNN","text":"Свёрточная нейросеть на PyTorch, которая распознаёт 10 видов одежды, в том числе на ваших загруженных фото.","stat":"Точность на тесте: **90.2%**"},"uz":{"kind":"KOMPYUTER KO‘RISHI","title":"Fashion-MNIST CNN klassifikatori","text":"PyTorch’dagi konvolyutsion neyron tarmoq 10 turdagi kiyimni aniqlaydi, jumladan siz yuklagan rasmlarda ham ishlaydi.","stat":"Test aniqligi: **90.2%**"}}},{"kind":"NLP","title":"Sentiment Analysis with Transformers","text":"In progress: classifying text reviews as positive or negative with modern language models.","tags":["Hugging Face","Transformers"],"soon":true,"i18n":{"ru":{"title":"Анализ тональности на трансформерах","text":"В работе: классификация отзывов на положительные и отрицательные с помощью современных языковых моделей."},"uz":{"title":"Transformerlar yordamida sentiment tahlili","text":"Jarayonda: zamonaviy til modellari yordamida sharhlarni ijobiy va salbiyga ajratish."}}}];
+let PROJ=null;
+function renderProjects(instant){
+if(!PROJ)return;
+box.innerHTML=PROJ.map((p,i)=>{
+const tr=(p.i18n&&p.i18n[L])||{},g=k=>tr[k]!==undefined?tr[k]:p[k];
 const n=String(i+1).padStart(2,'0');
-const demo=p.demo?'<a class="btn sm solid" href="'+esc(p.demo)+'"><span>Try it live</span><span class="ar">→</span></a>':'';
-const code=p.code?'<a class="btn sm" href="'+esc(p.code)+'"><span>Code</span><span class="ar">↗</span></a>':'';
-const side=p.soon?'<span class="soon mono">In progress</span>':(p.stat?'<div class="stat mono">'+esc(p.stat).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>')+'</div>':'')+'<div class="links">'+demo+code+'</div>';
-return '<div class="row"><span class="n mono">'+n+'</span><div><h3 class="serif">'+esc(p.title)+'</h3><p>'+esc(p.text||'')+'</p><div class="tags mono">'+(p.kind?esc(p.kind)+' · ':'')+(p.tags||[]).map(esc).join(' · ')+'</div></div><div class="side">'+side+'</div></div>'}).join('')
-}).catch(()=>{box.innerHTML='<p class="sub">Could not load projects.json. Check the file for a missing comma or quote.</p>'});
+const demo=p.demo?'<a class="btn sm solid" href="'+esc(p.demo)+'"><span>'+esc(t('tryLive'))+'</span><span class="ar">→</span></a>':'';
+const code=p.code?'<a class="btn sm" href="'+esc(p.code)+'" target="_blank" rel="noopener"><span>'+esc(t('code'))+'</span><span class="ar">↗</span></a>':'';
+const side=p.soon?'<span class="soon">'+esc(t('soon'))+'</span>':(g('stat')?'<div class="stat">'+esc(g('stat')).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>')+'</div>':'')+'<div class="links">'+demo+code+'</div>';
+return '<div class="row rv'+(instant?' in':'')+'" style="--i:'+i+'"><span class="n">'+n+'</span><div><h3>'+esc(g('title'))+'</h3><p>'+esc(g('text')||'')+'</p><div class="tags">'+(g('kind')?esc(g('kind'))+' · ':'')+(p.tags||[]).map(esc).join(' · ')+'</div></div><div class="side-r">'+side+'</div></div>'}).join('');
+if(!instant&&window.__observe)__observe(box);
+}
+fetch('projects.json').then(r=>{if(!r.ok)throw 0;return r.json()}).catch(()=>{console.warn('projects.json could not be loaded or parsed — showing built-in copy.');return FALLBACK}).then(list=>{PROJ=list;renderProjects(false)});
+
+/* =================== language =================== */
+function applyLang(animate){
+d.setAttribute('lang',L);document.title=t('title');
+const md=document.querySelector('meta[name=description]');if(md)md.content=t('desc');
+document.querySelectorAll('[data-i]').forEach(el=>{el.textContent=t(el.dataset.i);if(animate&&!isLite()){el.classList.remove('swap');void el.offsetWidth;el.classList.add('swap')}});
+document.querySelectorAll('[data-ia]').forEach(el=>{const v=t(el.dataset.ia);el.setAttribute('aria-label',v);el.title=v});
+document.querySelectorAll('.lg').forEach(b=>{const on=b.dataset.l===L;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on)});
+if(animate){renderProjects(true);drawBars();if(typeof place==='function')requestAnimationFrame(()=>place(active))}
+}
+document.querySelectorAll('.lg').forEach(b=>b.addEventListener('click',()=>{
+const order=['uz','ru','en'];let next=b.dataset.l;
+if(matchMedia('(max-width:600px)').matches&&next===L)next=order[(order.indexOf(L)+1)%3];
+if(next===L)return;L=next;try{localStorage.setItem('kl-lang',L)}catch(e){}applyLang(true);
+}));
+applyLang(false);
+
+/* =================== intro =================== */
+function go(){d.classList.add('go');try{sessionStorage.setItem('kl-seen','1')}catch(e){}}
+if(d.classList.contains('skip'))go();
+else setTimeout(()=>{$('ld').classList.add('out');go()},850);
+
+/* runtime FPS check: drop to low-power mode on a struggling device */
+if(!isLite()&&document.visibilityState==='visible'){
+let f=0;const t0=performance.now();
+(function tick(ts){f++;if(ts-t0<1000)requestAnimationFrame(tick);else if(f>5&&f<40&&document.visibilityState==='visible')d.classList.add('lite')})(t0);
+}
+
+/* =================== lamp pull-cord theme switch =================== */
+const lamp=$('lamp'),meta=document.querySelector('meta[name=theme-color]');
+const curTheme=()=>d.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+function syncMeta(){meta.content=getComputedStyle(d).getPropertyValue('--bg').trim()||'#F4F4F2'}
+function toggleTheme(){const next=curTheme()==='dark'?'light':'dark';d.setAttribute('data-theme',next);try{localStorage.setItem('kl-theme',next)}catch(e){}syncMeta()}
+syncMeta();
+const setPull=px=>lamp.style.setProperty('--pull',px+'px');
+function springBack(){lamp.classList.add('spring');setPull(0)}
+function tug(){lamp.classList.add('spring');setPull(isLite()?0:34);setTimeout(()=>{toggleTheme();springBack()},isLite()?0:150)}
+let sy=0,drag=false,moved=0,pull=0;
+lamp.addEventListener('pointerdown',e=>{if(e.button>0)return;drag=true;sy=e.clientY;moved=0;pull=0;lamp.setPointerCapture(e.pointerId);lamp.classList.remove('spring');lamp.classList.add('drag')});
+lamp.addEventListener('pointermove',e=>{if(!drag)return;const dy=e.clientY-sy;moved=Math.max(moved,Math.abs(dy));pull=Math.max(0,Math.min(70,dy*.8));setPull(pull)});
+function endDrag(e){if(!drag)return;drag=false;lamp.classList.remove('drag');
+if(e.type==='pointercancel'){springBack();return}
+if(pull>24){toggleTheme();springBack()}else if(moved<8){tug()}else springBack()}
+lamp.addEventListener('pointerup',endDrag);lamp.addEventListener('pointercancel',endDrag);
+lamp.addEventListener('click',e=>{if(e.detail===0)tug()});
+
+/* =================== sidebar with gliding indicator =================== */
+const ind=$('ind'),items=[...document.querySelectorAll('.ni')];
+let active=items[0],lock=0;
+function place(el){ind.style.transform='translate('+el.offsetLeft+'px,'+el.offsetTop+'px)';ind.style.width=el.offsetWidth+'px';ind.style.height=el.offsetHeight+'px'}
+window.place=place;
+function setActive(el,lift){
+if(!el)return;
+if(el!==active){active.classList.remove('on');el.classList.add('on');active=el}
+place(el);
+if(lift&&!isLite())[el,ind].forEach(n=>{n.classList.remove('lift');void n.offsetWidth;n.classList.add('lift')});
+}
+ind.style.transition='none';place(active);void ind.offsetWidth;ind.style.transition='';
+addEventListener('resize',()=>place(active));
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>place(active));
+[...items,ind].forEach(n=>n.addEventListener('animationend',()=>n.classList.remove('lift')));
+
+document.addEventListener('click',e=>{
+const a=e.target.closest('a[href^="#"]');if(!a||e.defaultPrevented)return;
+const id=a.getAttribute('href').slice(1),tg=$(id);if(!tg)return;
+e.preventDefault();
+const ni=items.find(n=>n.dataset.s===id);
+if(ni){setActive(ni,true);lock=Date.now()+900}
+const y=tg.getBoundingClientRect().top+scrollY-(innerWidth>600?0:10);
+scrollTo({top:id==='top'?0:y,behavior:isLite()?'auto':'smooth'});
+});
+
+const secs=['top','work','demos','about','contact'].map($);
+const spy=new IntersectionObserver(es=>{
+if(Date.now()<lock)return;
+es.forEach(en=>{if(en.isIntersecting)setActive(items.find(n=>n.dataset.s===en.target.id),false)})
+},{rootMargin:'-40% 0px -55% 0px'});
+secs.forEach(s=>s&&spy.observe(s));
+addEventListener('scroll',()=>{if(Date.now()<lock)return;if(innerHeight+scrollY>=d.scrollHeight-4)setActive(items[4],false)},{passive:true});
+
+/* =================== reveal + count-up =================== */
+function countUp(b){
+const m=b.textContent.match(/^([^\d]*)(\d+(?:\.\d+)?)(.*)$/);if(!m)return;
+const end=parseFloat(m[2]),dec=(m[2].split('.')[1]||'').length,t0=performance.now(),D=1100;
+(function f(ts){const p=Math.min(1,(ts-t0)/D),k=1-Math.pow(1-p,3);b.textContent=m[1]+(end*k).toFixed(dec)+m[3];if(p<1)requestAnimationFrame(f)})(t0);
+}
+const rv=new IntersectionObserver(es=>es.forEach(en=>{
+if(!en.isIntersecting)return;en.target.classList.add('in');rv.unobserve(en.target);
+if(!isLite())en.target.querySelectorAll('.stat b').forEach(countUp);
+}),{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+window.__observe=root=>root.querySelectorAll('.rv:not(.in)').forEach(el=>rv.observe(el));
+__observe(document);
+
+/* =================== press feedback + ripple =================== */
+const SEL='.btn,.ni,.ccard,.sq,.lg,.row,.chk,.brand,footer a,input[type=number],input[type=checkbox]';
+let pressed=null;
+document.addEventListener('pointerdown',e=>{
+const tgt=e.target.closest(SEL);if(!tgt)return;
+pressed=tgt;tgt.classList.add('pressed');
+if(isLite()||tgt.tagName==='INPUT')return;
+const r=tgt.getBoundingClientRect(),s=Math.max(r.width,r.height)*2.2,sp=document.createElement('span');
+sp.className='rip';sp.style.width=sp.style.height=s+'px';
+sp.style.left=(e.clientX-r.left-s/2)+'px';sp.style.top=(e.clientY-r.top-s/2)+'px';
+tgt.appendChild(sp);sp.addEventListener('animationend',()=>sp.remove());
+},{passive:true});
+const release=()=>{if(pressed){pressed.classList.remove('pressed');pressed=null}};
+['pointerup','pointercancel','dragstart'].forEach(ev=>document.addEventListener(ev,release,{passive:true}));
+addEventListener('blur',release);
 })();
 </script>
 </body>
